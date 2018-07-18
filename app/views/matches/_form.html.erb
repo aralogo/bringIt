@@ -1,0 +1,49 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :journeyID_id %><br>
+    <%= f.text_field :journeyID_id %>
+  </div>
+  <div class="field">
+    <%= f.label :origin_id %><br>
+    <%= f.text_field :origin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :destiny_id %><br>
+    <%= f.text_field :destiny_id %>
+  </div>
+  <div class="field">
+    <%= f.label :originTime %><br>
+    <%= f.datetime_select :originTime %>
+  </div>
+  <div class="field">
+    <%= f.label :destinyTime %><br>
+    <%= f.datetime_select :destinyTime %>
+  </div>
+  <div class="field">
+    <%= f.label :packageID_id %><br>
+    <%= f.text_field :packageID_id %>
+  </div>
+  <div class="field">
+    <%= f.label :acceptTime %><br>
+    <%= f.datetime_select :acceptTime %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

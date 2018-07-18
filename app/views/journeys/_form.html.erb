@@ -1,0 +1,61 @@
+<%= form_for(@journey) do |f| %>
+  <% if @journey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@journey.errors.count, "error") %> prohibited this journey from being saved:</h2>
+
+      <ul>
+      <% @journey.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :origin_id %><br>
+    <%= f.text_field :origin_id %>
+  </div>
+  <div class="field">
+    <%= f.label :intermediate1_id %><br>
+    <%= f.text_field :intermediate1_id %>
+  </div>
+  <div class="field">
+    <%= f.label :intermediate2_id %><br>
+    <%= f.text_field :intermediate2_id %>
+  </div>
+  <div class="field">
+    <%= f.label :intermediate3_id %><br>
+    <%= f.text_field :intermediate3_id %>
+  </div>
+  <div class="field">
+    <%= f.label :destiny_id %><br>
+    <%= f.text_field :destiny_id %>
+  </div>
+  <div class="field">
+    <%= f.label :originTime %><br>
+    <%= f.datetime_select :originTime %>
+  </div>
+  <div class="field">
+    <%= f.label :destinyTime %><br>
+    <%= f.datetime_select :destinyTime %>
+  </div>
+  <div class="field">
+    <%= f.label :driverID_id %><br>
+    <%= f.text_field :driverID_id %>
+  </div>
+  <div class="field">
+    <%= f.label :priceTotal %><br>
+    <%= f.text_field :priceTotal %>
+  </div>
+  <div class="field">
+    <%= f.label :price12 %><br>
+    <%= f.text_field :price12 %>
+  </div>
+  <div class="field">
+    <%= f.label :price23 %><br>
+    <%= f.text_field :price23 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

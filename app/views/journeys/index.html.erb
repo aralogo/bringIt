@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Journeys</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Origin</th>
+      <th>Intermediate1</th>
+      <th>Intermediate2</th>
+      <th>Intermediate3</th>
+      <th>Destiny</th>
+      <th>Origintime</th>
+      <th>Destinytime</th>
+      <th>Driver</th>
+      <th>Pricetotal</th>
+      <th>Price12</th>
+      <th>Price23</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @journeys.each do |journey| %>
+      <tr>
+        <td><%= journey.origin %></td>
+        <td><%= journey.intermediate1 %></td>
+        <td><%= journey.intermediate2 %></td>
+        <td><%= journey.intermediate3 %></td>
+        <td><%= journey.destiny %></td>
+        <td><%= journey.originTime %></td>
+        <td><%= journey.destinyTime %></td>
+        <td><%= journey.driverID %></td>
+        <td><%= journey.priceTotal %></td>
+        <td><%= journey.price01 %></td>
+        <td><%= journey.price12 %></td>
+        <td><%= journey.price23 %></td>
+        <td><%= link_to 'Show', journey %></td>
+        <td><%= link_to 'Edit', edit_journey_path(journey) %></td>
+        <td><%= link_to 'Destroy', journey, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Journey', new_journey_path %>

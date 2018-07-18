@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Delivery Orders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Matchid</th>
+      <th>Issigned driver</th>
+      <th>Issigned receiver</th>
+      <th>Destiny date</th>
+      <th>Comment</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @delivery_orders.each do |delivery_order| %>
+      <tr>
+        <td><%= delivery_order.matchID %></td>
+        <td><%= delivery_order.isSigned_Driver %></td>
+        <td><%= delivery_order.isSigned_Receiver %></td>
+        <td><%= delivery_order.destiny_date %></td>
+        <td><%= delivery_order.comment %></td>
+        <td><%= link_to 'Show', delivery_order %></td>
+        <td><%= link_to 'Edit', edit_delivery_order_path(delivery_order) %></td>
+        <td><%= link_to 'Destroy', delivery_order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Delivery order', new_delivery_order_path %>

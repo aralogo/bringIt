@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @journey.origin %>
+</p>
+
+<p>
+  <strong>Intermediate1:</strong>
+  <%= @journey.intermediate1 %>
+</p>
+
+<p>
+  <strong>Intermediate2:</strong>
+  <%= @journey.intermediate2 %>
+</p>
+
+<p>
+  <strong>Intermediate3:</strong>
+  <%= @journey.intermediate3 %>
+</p>
+
+<p>
+  <strong>Destiny:</strong>
+  <%= @journey.destiny %>
+</p>
+
+<p>
+  <strong>Origin time:</strong>
+  <%= @journey.originTime %>
+</p>
+
+<p>
+  <strong>Destination time:</strong>
+  <%= @journey.destinyTime %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @journey.driverID %>
+</p>
+
+<p>
+  <strong>Price Total:</strong>
+  <%= @journey.priceTotal %>
+</p>
+
+<p>
+  <strong>Price Origin-1 :</strong>
+  <%= @journey.price01 %>
+</p> 
+
+<p>
+  <strong>Price 1-2:</strong>
+  <%= @journey.price12 %>
+</p>
+
+<p>
+  <strong>Price 2-3:</strong>
+  <%= @journey.price23 %>
+</p>
+
+<%= link_to 'Edit', edit_journey_path(@journey) %> |
+<%= link_to 'Back', journeys_path %>

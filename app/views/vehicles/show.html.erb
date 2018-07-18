@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Numberplate:</strong>
+  <%= @vehicle.numberPlate %>
+</p>
+
+<p>
+  <strong>Driver:</strong>
+  <%= @vehicle.driverID %>
+</p>
+
+<p>
+  <strong>Model:</strong>
+  <%= @vehicle.model %>
+</p>
+
+<p>
+  <strong>Brand:</strong>
+  <%= @vehicle.brand %>
+</p>
+
+<p>
+  <strong>Isfull:</strong>
+  <%= @vehicle.isFull %>
+</p>
+
+<p>
+  <strong>Packagescat1:</strong>
+  <%= @vehicle.packagesCat1 %>
+</p>
+
+<p>
+  <strong>Packagescat2:</strong>
+  <%= @vehicle.packagesCat2 %>
+</p>
+
+<p>
+  <strong>Packagescat3:</strong>
+  <%= @vehicle.packagesCat3 %>
+</p>
+
+<%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
+<%= link_to 'Back', vehicles_path %>

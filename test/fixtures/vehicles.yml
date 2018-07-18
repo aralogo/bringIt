@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  numberPlate: MyString
+  driverID_id: 
+  model: MyString
+  brand: MyString
+  isFull: false
+  packagesCat1: 1
+  packagesCat2: 1
+  packagesCat3: 1
+
+two:
+  numberPlate: MyString
+  driverID_id: 
+  model: MyString
+  brand: MyString
+  isFull: false
+  packagesCat1: 1
+  packagesCat2: 1
+  packagesCat3: 1

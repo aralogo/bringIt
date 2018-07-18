@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bring It</title>
+    <%= favicon_link_tag 'Bring it.ico' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <div class="nav navbar-inverse">
+      <div class="container">
+        <div class="navbar-header">
+           <%= link_to (image_tag "Bring it.ico", :width => 50, :height =>50), root_path %> <i class="tittles">BRING IT</i>
+        </div>
+        <div class="navbar-left">
+           <!--Flash messages for notifing the user-->
+            <!--<p class="notice">< %= notice %></p>-->
+            <!--<p class="alert">< %= alert %></p>-->
+            <% flash.each do |key, value| %>
+              <div class="alert alert-<%= key %> alert-dismissable">
+                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <%= value %>
+              </div>
+            <% end %>
+        </div>
+        <div class="navbar-right">
+          <p></p>
+          <% if user_signed_in? %>
+            <div>
+              <%= current_user.name %> 
+              <%= link_to 'Profile', edit_user_registration_path, :method => :get, class: "btn btn-primary" %>
+              <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-primary" %></div>
+          <% else %>
+            <%= link_to 'Register', new_user_registration_path %>  <%= link_to 'Sign in', new_user_session_path %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <%= yield %>
+    </div>
+  </body>
+</html>

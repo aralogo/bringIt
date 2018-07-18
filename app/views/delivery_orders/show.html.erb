@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matchid:</strong>
+  <%= @delivery_order.matchID %>
+</p>
+
+<p>
+  <strong>Issigned driver:</strong>
+  <%= @delivery_order.isSigned_Driver %>
+</p>
+
+<p>
+  <strong>Issigned receiver:</strong>
+  <%= @delivery_order.isSigned_Receiver %>
+</p>
+
+<p>
+  <strong>Destiny date:</strong>
+  <%= @delivery_order.destiny_date %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @delivery_order.comment %>
+</p>
+
+<%= link_to 'Edit', edit_delivery_order_path(@delivery_order) %> |
+<%= link_to 'Back', delivery_orders_path %>

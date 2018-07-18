@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  origin_id: 
+  intermediate1_id: 
+  intermediate2_id: 
+  intermediate3_id: 
+  destiny_id: 
+  originTime: 2018-07-17 16:38:35
+  destinyTime: 2018-07-17 16:38:35
+  driverID_id: 
+  priceTotal: 
+  price12: 9.99
+  price23: 9.99
+
+two:
+  origin_id: 
+  intermediate1_id: 
+  intermediate2_id: 
+  intermediate3_id: 
+  destiny_id: 
+  originTime: 2018-07-17 16:38:35
+  destinyTime: 2018-07-17 16:38:35
+  driverID_id: 
+  priceTotal: 
+  price12: 9.99
+  price23: 9.99

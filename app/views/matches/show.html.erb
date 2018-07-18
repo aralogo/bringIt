@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Journeyid:</strong>
+  <%= @match.journeyID %>
+</p>
+
+<p>
+  <strong>Origin:</strong>
+  <%= @match.origin %>
+</p>
+
+<p>
+  <strong>Destiny:</strong>
+  <%= @match.destiny %>
+</p>
+
+<p>
+  <strong>Origintime:</strong>
+  <%= @match.originTime %>
+</p>
+
+<p>
+  <strong>Destinytime:</strong>
+  <%= @match.destinyTime %>
+</p>
+
+<p>
+  <strong>Packageid:</strong>
+  <%= @match.packageID %>
+</p>
+
+<p>
+  <strong>Accepttime:</strong>
+  <%= @match.acceptTime %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @match.price %>
+</p>
+
+<%= link_to 'Edit', edit_match_path(@match) %> |
+<%= link_to 'Back', matches_path %>

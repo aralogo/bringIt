@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matchid:</strong>
+  <%= @contract_origin.matchID %>
+</p>
+
+<p>
+  <strong>Issigned driver:</strong>
+  <%= @contract_origin.isSigned_Driver %>
+</p>
+
+<p>
+  <strong>Issigned sender:</strong>
+  <%= @contract_origin.isSigned_Sender %>
+</p>
+
+<p>
+  <strong>Origin date:</strong>
+  <%= @contract_origin.origin_date %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @contract_origin.comment %>
+</p>
+
+<%= link_to 'Edit', edit_contract_origin_path(@contract_origin) %> |
+<%= link_to 'Back', contract_origins_path %>

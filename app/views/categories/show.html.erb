@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<p></p>
+<table class="table">
+  <thead class="table_heading">
+  <tr>
+    <td>
+      <strong>CAT ID:</strong>
+      <%= @category.id %>
+    </td>
+  </tr>
+  </thead>
+   <tr>
+    <td>
+      <strong>Max length:</strong>
+      <%= @category.max_length %>
+    </td>
+  </tr> 
+  <tr>
+    <td>
+      <strong>Max width:</strong>
+      <%= @category.max_width %>
+    </td>
+  </tr> 
+  <tr>
+    <td>
+      <strong>Max height:</strong>
+      <%= @category.max_height %>
+    </td>
+  </tr> 
+  <tr>
+    <td>
+      <strong>Max weight:</strong>
+      <%= @category.max_weight %>
+    </td>
+  </tr>
+</table>
+
+  
+<%= link_to 'Edit', edit_category_path(@category) %> |
+<%= link_to 'Back', categories_path %>
