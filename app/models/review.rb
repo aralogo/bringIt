@@ -4,4 +4,5 @@ class Review < ActiveRecord::Base
   
   
   validates :comment, presence: true
+  validates :comment, length: {maximum: 500}
 end

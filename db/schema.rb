@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180717172526) do
+ActiveRecord::Schema.define(version: 20180719183327) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "ISBN"
@@ -123,8 +123,9 @@ ActiveRecord::Schema.define(version: 20180717172526) do
     t.integer  "category_id"
     t.integer  "user_id"
     t.string   "status"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.boolean  "acceptPolicy"
   end
 
   add_index "packages", ["category_id"], name: "index_packages_on_category_id"

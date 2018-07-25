@@ -23,14 +23,14 @@
   <tbody>
     <% @journeys.each do |journey| %>
       <tr>
-        <td><%= journey.origin %></td>
-        <td><%= journey.intermediate1 %></td>
-        <td><%= journey.intermediate2 %></td>
-        <td><%= journey.intermediate3 %></td>
-        <td><%= journey.destiny %></td>
+        <td><%= journey.origin_id %></td>
+        <!--<td>< %= journey.intermediate1 %></td>-->
+        <!--<td>< %= journey.intermediate2 %></td>-->
+        <!--<td>< %= journey.intermediate3 %></td>-->
+        <!--<td>< %= journey.destiny.city %></td>-->
         <td><%= journey.originTime %></td>
         <td><%= journey.destinyTime %></td>
-        <td><%= journey.driverID %></td>
+        <td><%= journey.driverID.email %></td>
         <td><%= journey.priceTotal %></td>
         <td><%= journey.price01 %></td>
         <td><%= journey.price12 %></td>

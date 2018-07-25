@@ -1,0 +1,20 @@
+<table class="table">
+  <tbody>
+    <% @journeys.each do |journey| %>
+      <tr>
+        
+        <td><h3><%= journey.origin_id %></h3></td>
+        <td><%= journey.destiny_id %></td>
+        <td><%= journey.originTime %></td>
+        
+        
+        
+        <td><%= link_to 'Show', journey %></td>
+        <!--<td>< %= link_to 'Reviews', journey_reviews_path(product) %></td>-->
+        
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>

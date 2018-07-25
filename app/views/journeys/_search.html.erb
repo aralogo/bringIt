@@ -1,0 +1,30 @@
+
+<%= form_tag("/search", :method => "post") do %>
+<table>
+    <!--<tr>-->
+    <!--    <td>-->
+    <!--        <h5>Search by Keyword</h5>-->
+    <!--        < %= label_tag(:q, "Keyword") %>-->
+    <!--        < %= text_field_tag(:q) %> -->
+    <!--    </td>-->
+    <!--</tr>-->
+    <tr>
+        <td>
+           
+            <%= label_tag(:origin, "From") %>
+            <%= text_field_tag(:origin) %>
+            <%= label_tag(:destiny, "To") %>
+            <%= text_field_tag(:destiny) %>
+            <%= label_tag(:origin_date) %>
+            <%= date_field_tag(:origin_date, Date.today) %>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <%= submit_tag("Search") %>
+        </td>
+    </tr>
+</table>
+
+
+<% end %>

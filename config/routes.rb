@@ -2,21 +2,18 @@ Rails.application.routes.draw do
   resources :delivery_orders
   resources :contract_origins
   resources :matches
-  resources :journeys
+  resources :journeys do
+    resources :locations
+  end
   resources :packages
-  resources :bank_accounts
   resources :bank_accounts
   resources :vehicles
   resources :reviews
   devise_for :users
-  #get 'site/about'
-  #get 'site/contact'
-  #get 'site/home'
 
-  resources :locations
   resources :location_logs
   resources :categories
-  #resources :journeys
+  post 'search' => 'journeys#search'
   
   #devise_for :users
   

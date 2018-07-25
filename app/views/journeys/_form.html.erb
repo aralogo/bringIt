@@ -10,27 +10,98 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :origin_id %><br>
-    <%= f.text_field :origin_id %>
-  </div>
-  <div class="field">
-    <%= f.label :intermediate1_id %><br>
-    <%= f.text_field :intermediate1_id %>
-  </div>
-  <div class="field">
-    <%= f.label :intermediate2_id %><br>
-    <%= f.text_field :intermediate2_id %>
-  </div>
-  <div class="field">
-    <%= f.label :intermediate3_id %><br>
-    <%= f.text_field :intermediate3_id %>
-  </div>
-  <div class="field">
-    <%= f.label :destiny_id %><br>
-    <%= f.text_field :destiny_id %>
-  </div>
+  
+  <!--Origin information-->
+  <%= f.fields_for :origin do |o| %>
+    <fieldset>
+      <legend>Origin:</legend>
+      <%= o.label :Address1 %>
+      <%= o.text_field :address1 %>
+      <%= o.label :Address2 %>
+      <%= o.text_field :address2 %>
+      <%= o.label :city %>
+      <%= o.text_field :city %>
+      <%= o.label :county %>
+      <%= o.text_field :county %>
+      <%= o.label :country %>
+      <%= o.text_field :country %>
+    </fieldset>
+  <% end %>
+  
+  <!--Intermediate point 1 information-->
+  <%= f.fields_for :intermediate1 do |i1| %>
+    <fieldset>
+      <legend>Intermediate point num 1 :</legend>
+      <%= i1.label :Address1 %>
+      <%= i1.text_field :address1 %>
+      <%= i1.label :Address2 %>
+      <%= i1.text_field :address2 %>
+      <%= i1.label :city %>
+      <%= i1.text_field :city %>
+      <%= i1.label :county %>
+      <%= i1.text_field :county %>
+      <%= i1.label :country %>
+      <%= i1.text_field :country %>
+    </fieldset>
+  <% end %>
+  
+  <!--<div class="field">-->
+  <!--  < %= f.label :intermediate1_id %><br>-->
+  <!--  < %= f.text_field :intermediate1_id %>-->
+  <!--</div>-->
+  
+   <!--Intermediate point 2 information-->
+  <%= f.fields_for :intermediate2 do |i2| %>
+    <fieldset>
+      <legend>Intermediate point num 2 :</legend>
+      <%= i2.label :Address1 %>
+      <%= i2.text_field :address1 %>
+      <%= i2.label :Address2 %>
+      <%= i2.text_field :address2 %>
+      <%= i2.label :city %>
+      <%= i2.text_field :city %>
+      <%= i2.label :county %>
+      <%= i2.text_field :county %>
+      <%= i2.label :country %>
+      <%= i2.text_field :country %>
+    </fieldset>
+  <% end %>
+  
+  
+   <!--Intermediate point 3 information-->
+  <%= f.fields_for :intermediate3 do |i3| %>
+    <fieldset>
+      <legend>Intermediate point num 3 :</legend>
+      <%= i3.label :Address1 %>
+      <%= i3.text_field :address1 %>
+      <%= i3.label :Address2 %>
+      <%= i3.text_field :address2 %>
+      <%= i3.label :city %>
+      <%= i3.text_field :city %>
+      <%= i3.label :county %>
+      <%= i3.text_field :county %>
+      <%= i3.label :country %>
+      <%= i3.text_field :country %>
+    </fieldset>
+  <% end %>
+ 
+   <!--Destination information-->
+  <%= f.fields_for :destiny do |d| %>
+    <fieldset>
+      <legend>Destiny:</legend>
+      <%= d.label :Address1 %>
+      <%= d.text_field :address1 %>
+      <%= d.label :Address2 %>
+      <%= d.text_field :address2 %>
+      <%= d.label :city %>
+      <%= d.text_field :city %>
+      <%= d.label :county %>
+      <%= d.text_field :county %>
+      <%= d.label :country %>
+      <%= d.text_field :country %>
+    </fieldset>
+  <% end %>
+  
   <div class="field">
     <%= f.label :originTime %><br>
     <%= f.datetime_select :originTime %>

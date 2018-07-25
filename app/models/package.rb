@@ -6,4 +6,5 @@ class Package < ActiveRecord::Base
   
   
   validates :category_id, presence: true
+  validates :acceptPolicy, acceptance: {:accept => true }
 end

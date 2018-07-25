@@ -2,27 +2,37 @@
 
 <p>
   <strong>Origin:</strong>
-  <%= @journey.origin %>
+  <% if (@journey.origin != nil) %>
+    <%= @journey.origin.city %>
+  <% end %>
 </p>
 
 <p>
   <strong>Intermediate1:</strong>
-  <%= @journey.intermediate1 %>
+  <% if (@journey.intermediate1 != nil) %>
+    <%= @journey.intermediate1.city %>
+  <% end %>
 </p>
 
 <p>
-  <strong>Intermediate2:</strong>
-  <%= @journey.intermediate2 %>
+  <% if (@journey.intermediate2 != nil) %>
+    <strong>Intermediate2:</strong>
+    <%= @journey.intermediate2.city %>
+  <% end %>
 </p>
 
 <p>
+  <% if (@journey.intermediate3 != nil) %>
   <strong>Intermediate3:</strong>
-  <%= @journey.intermediate3 %>
+  <%= @journey.intermediate3.city %>
+  <% end %>
 </p>
 
 <p>
   <strong>Destiny:</strong>
-  <%= @journey.destiny %>
+  <% if (@journey.destiny != nil) %>
+  <%= @journey.destiny.city %>
+  <% end %>
 </p>
 
 <p>
@@ -37,7 +47,7 @@
 
 <p>
   <strong>Driver:</strong>
-  <%= @journey.driverID %>
+  <%= @journey.driverID.email %>
 </p>
 
 <p>
