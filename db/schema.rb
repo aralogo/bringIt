@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180719183327) do
+ActiveRecord::Schema.define(version: 20180726154420) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "ISBN"
@@ -162,6 +162,7 @@ ActiveRecord::Schema.define(version: 20180719183327) do
     t.boolean  "isDriver"
     t.boolean  "autoAccept"
     t.string   "driverlicense"
+    t.boolean  "isAdmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -34,8 +34,7 @@ class JourneysController < ApplicationController
     @destiny = "%#{params[:destiny]}%"
     @date = "%#{params[:origin_date]}%"
     
-    puts "-------O------- #{@origin}"
-    puts "-------D------- #{@destiny}"
+    
     
     if ((@origin != "%%") and (@destiny == "%%"))
       @location_ids = Location.where("city like ?", @origin)
@@ -47,7 +46,9 @@ class JourneysController < ApplicationController
     elsif ((@origin != "%%") and (@destiny !=  "%%"))
       @O_ids = Location.where("city like ?", @origin)
       @D_ids = Location.where("city like ?", @destiny)
-      @journeys = Journey.where( "origin_id IN (?) and destiny_id IN (?)" , @O_ids, @D_ids)
+      puts "-------O------- #{@O_ids}"
+      puts "-------D------- #{@D_ids}"
+      @journeys = Journey.where( "origin_id IN (?) and destiny_id IN (?)" , @O_ids.ids, @D_ids.ids)
       
       # if O is ori then D can be i1,i2,i3 or des
       # if O is i1 then D can be i2,i3 or des
