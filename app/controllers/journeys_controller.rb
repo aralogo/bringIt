@@ -17,7 +17,7 @@ class JourneysController < ApplicationController
   # GET /journeys/1
   # GET /journeys/1.json
   def show
-    @journey.user = User.find(@journey.driverID_id)
+    @user = User.find(@journey.driverID_id)
   end
 
   # GET /journeys/new
@@ -28,9 +28,8 @@ class JourneysController < ApplicationController
     @journey.build_intermediate2
     @journey.build_intermediate3
     @journey.destiny = Location.new
-    # @journeyDriver = User.find(current_user.id)
-    @users = User.all
-    # puts "!!!!!!!!!!!!!!!!!!#{@journeyDriver.id}"
+    
+    
   end
 
   # GET /journeys/1/edit
@@ -44,6 +43,7 @@ class JourneysController < ApplicationController
     if @journey.intermediate3_id.nil?
       @journey.build_intermediate3
     end
+  
   end
   
   def search 
@@ -82,7 +82,7 @@ class JourneysController < ApplicationController
   # POST /journeys.json
   def create
     @journey = Journey.new(journey_params)
-
+    
     respond_to do |format|
       if @journey.save
         format.html { redirect_to @journey, notice: 'Journey was successfully created.' }

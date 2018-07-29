@@ -7,5 +7,5 @@ class Location < ActiveRecord::Base
     has_one :Journey_intermediate2, :class_name => "Journey", :foreign_key => 'intermediate2_id'
     has_one :Journey_intermediate3, :class_name => "Journey", :foreign_key => 'intermediate3_id'
     
-    validates :address1, :city, :county, :country, presence: true
+    # validates :address1, :city, :county, :country, presence: true
 end

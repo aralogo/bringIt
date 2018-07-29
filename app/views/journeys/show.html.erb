@@ -1,74 +1,51 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Origin:</strong>
-  <% if (@journey.origin != nil) %>
-    <%= @journey.origin.city %>
+<table class="table">
+  <tr>
+    <td>
+      <strong>Origin:</strong>
+        <%= @journey.origin.city %>
+    </td>
+    <td><strong>Origin time:</strong><%= @journey.originTime %></td>
+  </tr>
+  <% if (@journey.intermediate1.city != "") %>
+  <tr>
+    <td><strong>Intermediate1:</strong><%= @journey.intermediate1.city %></td>
+    <td><strong>Price Origin-intermediate1 :</strong> <%= @journey.price01 %></td>
+  </tr>
   <% end %>
-</p>
-
-<p>
-  <strong>Intermediate1:</strong>
-  <% if (@journey.intermediate1 != nil) %>
-    <%= @journey.intermediate1.city %>
+  <% if (@journey.intermediate2.city != "") %>
+  <tr>
+    <td><strong>Intermediate2:</strong><%= @journey.intermediate2.city %></td>
+    <td><strong>Price intermediate1-intermediate2:</strong><%= @journey.price12 %></td>
+  </tr>
   <% end %>
-</p>
-
-<p>
-  <% if (@journey.intermediate2 != nil) %>
-    <strong>Intermediate2:</strong>
-    <%= @journey.intermediate2.city %>
+  <% if (@journey.intermediate3.city != "") %>
+  <tr>
+    <td><strong>Intermediate3:</strong><%= @journey.intermediate3.city %></td>
+    <td><strong>Price intermediate2-intermediate3:</strong> <%= @journey.price23 %></td>
+  </tr>
   <% end %>
-</p>
+  <tr>
+    <td>
+      <strong>Destiny:</strong>
+      <% if (@journey.destiny != nil) %>
+        <%= @journey.destiny.city %>
+      <% end %>
+    </td>
+    <td><strong>Destination time:</strong><%= @journey.destinyTime %></td>
+  </tr>
+  <tr>
+    <td><strong>Driver:</strong><%= @user.email %></td>
+    <td><strong>Price Total:</strong>  <%= @journey.priceTotal %></td>
+  </tr>
+</table>
 
-<p>
-  <% if (@journey.intermediate3 != nil) %>
-  <strong>Intermediate3:</strong>
-  <%= @journey.intermediate3.city %>
-  <% end %>
-</p>
 
-<p>
-  <strong>Destiny:</strong>
-  <% if (@journey.destiny != nil) %>
-  <%= @journey.destiny.city %>
-  <% end %>
-</p>
+  
 
-<p>
-  <strong>Origin time:</strong>
-  <%= @journey.originTime %>
-</p>
+  
 
-<p>
-  <strong>Destination time:</strong>
-  <%= @journey.destinyTime %>
-</p>
-
-<p>
-  <strong>Driver:</strong>
-  <%= @journey.user.email %>
-</p>
-
-<p>
-  <strong>Price Origin-1 :</strong>
-  <%= @journey.price01 %>
-</p> 
-
-<p>
-  <strong>Price 1-2:</strong>
-  <%= @journey.price12 %>
-</p>
-
-<p>
-  <strong>Price 2-3:</strong>
-  <%= @journey.price23 %>
-</p>
-
-<p>
-  <strong>Price Total:</strong>
-  <%= @journey.priceTotal %>
-</p>
 
 <%= link_to 'Edit', edit_journey_path(@journey) %> |
 <%= link_to 'Back', journeys_path %>
