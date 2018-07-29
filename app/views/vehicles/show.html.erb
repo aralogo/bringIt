@@ -1,44 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Numberplate:</strong>
-  <%= @vehicle.numberPlate %>
-</p>
+<h2> Your Vehicle 
+<%= @vehicle.driverID_id %>
+<%= @driver.name %>
 
-<p>
-  <strong>Driver:</strong>
-  <%= @vehicle.driverID %>
-</p>
+</h2>
+<table class="table">
+  <tr>
+    <td><strong>Numberplate:</strong></br> <%= @vehicle.numberPlate %></td>
+    <td><strong>Model:</strong></br> <%= @vehicle.model %> </td>
+    <td><strong>Brand:</strong></br> <%= @vehicle.brand %></td>
+  </tr>
 
-<p>
-  <strong>Model:</strong>
-  <%= @vehicle.model %>
-</p>
+  <tr>
+    <td colspan=3><strong>Isfull:</strong></br> <%= @vehicle.isFull %></td>
+  </tr>
 
-<p>
-  <strong>Brand:</strong>
-  <%= @vehicle.brand %>
-</p>
-
-<p>
-  <strong>Isfull:</strong>
-  <%= @vehicle.isFull %>
-</p>
-
-<p>
-  <strong>Packagescat1:</strong>
-  <%= @vehicle.packagesCat1 %>
-</p>
-
-<p>
-  <strong>Packagescat2:</strong>
-  <%= @vehicle.packagesCat2 %>
-</p>
-
-<p>
-  <strong>Packagescat3:</strong>
-  <%= @vehicle.packagesCat3 %>
-</p>
-
+  <tr>
+    <td><strong>Max Packages in cat1:</strong></br> <%= @vehicle.packagesCat1 %></td>
+    <td><strong>Max Packages in cat2:</strong></br> <%= @vehicle.packagesCat2 %></td>
+    <td><strong>Max Packages in cat3:</strong></br> <%= @vehicle.packagesCat3 %></td>
+  </tr>
+</table>
 <%= link_to 'Edit', edit_vehicle_path(@vehicle) %> |
 <%= link_to 'Back', vehicles_path %>

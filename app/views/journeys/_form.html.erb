@@ -11,123 +11,139 @@
     </div>
   <% end %>
   
-  <!--Origin information-->
-  <%= f.fields_for :origin do |o| %>
-    <fieldset>
-      <legend>Origin:</legend>
-      <%= o.label :Address1 %>
-      <%= o.text_field :address1 %>
-      <%= o.label :Address2 %>
-      <%= o.text_field :address2 %>
-      <%= o.label :city %>
-      <%= o.text_field :city %>
-      <%= o.label :county %>
-      <%= o.text_field :county %>
-      <%= o.label :country %>
-      <%= o.text_field :country %>
-    </fieldset>
-  <% end %>
-  
-  <!--Intermediate point 1 information-->
-  <!--if i3 empty show empty-->
-  <%= f.fields_for :intermediate1 do |i1| %>
-    <fieldset>
-      <legend>Intermediate point num 1 :</legend>
-      <%= i1.label :Address1 %>
-      <%= i1.text_field :address1 %>
-      <%= i1.label :Address2 %>
-      <%= i1.text_field :address2 %>
-      <%= i1.label :city %>
-      <%= i1.text_field :city %>
-      <%= i1.label :county %>
-      <%= i1.text_field :county %>
-      <%= i1.label :country %>
-      <%= i1.text_field :country %>
-    </fieldset>
-  <% end %>
-  
-  <!--<div class="field">-->
-  <!--  < %= f.label :intermediate1_id %><br>-->
-  <!--  < %= f.text_field :intermediate1_id %>-->
-  <!--</div>-->
-  
-   <!--Intermediate point 2 information-->
-  <%= f.fields_for :intermediate2 do |i2| %>
-    <fieldset>
-      <legend>Intermediate point num 2 :</legend>
-      <%= i2.label :Address1 %>
-      <%= i2.text_field :address1 %>
-      <%= i2.label :Address2 %>
-      <%= i2.text_field :address2 %>
-      <%= i2.label :city %>
-      <%= i2.text_field :city %>
-      <%= i2.label :county %>
-      <%= i2.text_field :county %>
-      <%= i2.label :country %>
-      <%= i2.text_field :country %>
-    </fieldset>
-  <% end %>
-  
-  
-   <!--Intermediate point 3 information-->
-  <%= f.fields_for :intermediate3 do |i3| %>
-    <fieldset>
-      <legend>Intermediate point num 3 :</legend>
-      <%= i3.label :Address1 %>
-      <%= i3.text_field :address1 %>
-      <%= i3.label :Address2 %>
-      <%= i3.text_field :address2 %>
-      <%= i3.label :city %>
-      <%= i3.text_field :city %>
-      <%= i3.label :county %>
-      <%= i3.text_field :county %>
-      <%= i3.label :country %>
-      <%= i3.text_field :country %>
-    </fieldset>
-  <% end %>
- 
-   <!--Destination information-->
-  <%= f.fields_for :destiny do |d| %>
-    <fieldset>
-      <legend>Destiny:</legend>
-      <%= d.label :Address1 %>
-      <%= d.text_field :address1 %>
-      <%= d.label :Address2 %>
-      <%= d.text_field :address2 %>
-      <%= d.label :city %>
-      <%= d.text_field :city %>
-      <%= d.label :county %>
-      <%= d.text_field :county %>
-      <%= d.label :country %>
-      <%= d.text_field :country %>
-    </fieldset>
-  <% end %>
-  
-  <div class="field">
-    <%= f.label :originTime %><br>
-    <%= f.datetime_select :originTime %>
-  </div>
-  <div class="field">
-    <%= f.label :destinyTime %><br>
-    <%= f.datetime_select :destinyTime %>
-  </div>
-  <div class="field">
-    <%= f.label :driverID_id %><br>
-    <%= f.text_field :driverID_id %>
-  </div>
-  <div class="field">
-    <%= f.label :priceTotal %><br>
-    <%= f.text_field :priceTotal %>
-  </div>
-  <div class="field">
-    <%= f.label :price12 %><br>
-    <%= f.text_field :price12 %>
-  </div>
-  <div class="field">
-    <%= f.label :price23 %><br>
-    <%= f.text_field :price23 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <td>
+        <!--Origin information-->
+        <%= f.fields_for :origin do |o| %>
+          <table >
+            <th colspan=2>Origin:</th>
+            <tr>
+              <td><%= o.label :Address1 %> <%= o.text_field :address1 %></td>
+              <td><%= o.label :Address2 %> <%= o.text_field :address2 %></td>
+            </tr>
+            <tr>
+              <td><%= o.label :city %> <%= o.text_field :city %></td>
+              <td><%= o.label :county %> <%= o.text_field :county %></td>
+            </tr>
+            <tr>
+              <td colspan=2><%= o.label :country %><%= o.text_field :country %></td>
+            </tr>
+          </table>
+        <% end %>
+      </td>
+      <td>
+        <%= f.label :price01 %><br><%= f.text_field :price01 %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Intermediate point 1 information-->
+        <%= f.fields_for :intermediate1 do |i1| %>
+          <table >
+            <th colspan=2>Intermediate point1:</th>
+            <tr>
+              <td><%= i1.label :Address1 %> <%= i1.text_field :address1 %></td>
+              <td><%= i1.label :Address2 %> <%= i1.text_field :address2 %></td>
+            </tr>
+            <tr>
+              <td><%= i1.label :city %> <%= i1.text_field :city %></td>
+              <td><%= i1.label :county %> <%= i1.text_field :county %></td>
+            </tr>
+            <tr>
+              <td colspan=2><%= i1.label :country %><%= i1.text_field :country %></td>
+            </tr>
+          </table>
+        <% end %>
+      </td>
+      <td><%= f.label :price12 %><br><%= f.text_field :price12 %></td>
+    </tr>
+    <tr>
+      <td>
+        <!--Intermediate point 2 information-->
+        <%= f.fields_for :intermediate2 do |i2| %>
+          <table >
+            <th colspan=2>Intermediate point 2:</th>
+            <tr>
+              <td><%= i2.label :Address1 %> <%= i2.text_field :address1 %></td>
+              <td><%= i2.label :Address2 %> <%= i2.text_field :address2 %></td>
+            </tr>
+            <tr>
+              <td><%= i2.label :city %> <%= i2.text_field :city %></td>
+              <td><%= i2.label :county %> <%= i2.text_field :county %></td>
+            </tr>
+            <tr>
+              <td colspan=2><%= i2.label :country %><%= i2.text_field :country %></td>
+            </tr>
+          </table>
+          <% end %>
+      </td>
+      <td><%= f.label :price23 %><br><%= f.text_field :price23 %></td>
+    </tr>
+    <tr>
+      <td>
+        <!--Intermediate point 3 information-->
+        <%= f.fields_for :intermediate3 do |i3| %>
+          <table >
+            <th colspan=2>Intermediate point 3:</th>
+            <tr>
+              <td><%= i3.label :Address1 %> <%= i3.text_field :address1 %></td>
+              <td><%= i3.label :Address2 %> <%= i3.text_field :address2 %></td>
+            </tr>
+            <tr>
+              <td><%= i3.label :city %> <%= i3.text_field :city %></td>
+              <td><%= i3.label :county %> <%= i3.text_field :county %></td>
+            </tr>
+            <tr>
+              <td colspan=2><%= i3.label :country %><%= i3.text_field :country %></td>
+            </tr>
+          </table>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <!--Destination information-->
+        <%= f.fields_for :destiny do |d| %>
+          <table >
+            <th colspan=2>Destination:</th>
+            <tr>
+              <td><%= d.label :Address1 %> <%= d.text_field :address1 %></td>
+              <td><%= d.label :Address2 %> <%= d.text_field :address2 %></td>
+            </tr>
+            <tr>
+              <td><%= d.label :city %> <%= d.text_field :city %></td>
+              <td><%= d.label :county %> <%= d.text_field :county %></td>
+            </tr>
+            <tr>
+              <td colspan=2><%= d.label :country %><%= d.text_field :country %></td>
+            </tr>
+          </table>
+        <% end %>
+      </td>
+      <td colspan="2" align="right">
+        <%= f.label :priceTotal %><br><%= f.text_field :priceTotal %>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :originTime %><br> <%= f.datetime_select :originTime %> </td>
+      <td><%= f.label :destinyTime %><br> <%= f.datetime_select :destinyTime %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :driverID_id %><br>
+        <% if current_user.isAdmin? %>
+            <%= f.select :driverID_id, options_for_select(@users.collect{|u| [u.name+ ' ' +u.surname, u.id] }, @journey.driverID_id) %>
+          <% elsif %>
+             <%= f.text_field :driverID_id, :value => current_user.id, :disabled => true %>
+          <% end %>
+      </td>
+    </tr>
+    
+    <tr>
+      <td colspan=2 align="right">
+      <%= f.submit %>
+      </td>
+    </tr>
+  </table>
 <% end %>

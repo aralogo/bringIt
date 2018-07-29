@@ -4,7 +4,7 @@ class Journey < ActiveRecord::Base
   belongs_to :intermediate2, :class_name => "Location", dependent: :destroy
   belongs_to :intermediate3, :class_name => "Location", dependent: :destroy
   belongs_to :destiny, :class_name => "Location", dependent: :destroy
-  belongs_to :driverID, :class_name => "User"
+  belongs_to :User
   has_many :Match
   
   validates :originTime, :destinyTime, :driverID, :priceTotal, presence: true

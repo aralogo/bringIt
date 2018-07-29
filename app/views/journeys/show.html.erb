@@ -47,12 +47,7 @@
 
 <p>
   <strong>Driver:</strong>
-  <%= @journey.driverID.email %>
-</p>
-
-<p>
-  <strong>Price Total:</strong>
-  <%= @journey.priceTotal %>
+  <%= @journey.user.email %>
 </p>
 
 <p>
@@ -68,6 +63,11 @@
 <p>
   <strong>Price 2-3:</strong>
   <%= @journey.price23 %>
+</p>
+
+<p>
+  <strong>Price Total:</strong>
+  <%= @journey.priceTotal %>
 </p>
 
 <%= link_to 'Edit', edit_journey_path(@journey) %> |

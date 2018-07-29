@@ -11,39 +11,39 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :numberPlate %><br>
-    <%= f.text_field :numberPlate %>
-  </div>
-  <div class="field">
-    <%= f.label :driverID_id %><br>
-    <%= f.text_field :driverID_id %>
-  </div>
-  <div class="field">
-    <%= f.label :model %><br>
-    <%= f.text_field :model %>
-  </div>
-  <div class="field">
-    <%= f.label :brand %><br>
-    <%= f.text_field :brand %>
-  </div>
-  <div class="field">
-    <%= f.label :isFull %><br>
-    <%= f.check_box :isFull %>
-  </div>
-  <div class="field">
-    <%= f.label :packagesCat1 %><br>
-    <%= f.number_field :packagesCat1 %>
-  </div>
-  <div class="field">
-    <%= f.label :packagesCat2 %><br>
-    <%= f.number_field :packagesCat2 %>
-  </div>
-  <div class="field">
-    <%= f.label :packagesCat3 %><br>
-    <%= f.number_field :packagesCat3 %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table class="table">
+  <tr>
+    <td><%= f.label :numberPlate %><br> <%= f.text_field :numberPlate %></td>
+    <td>
+      <%= f.label :driverID_id %><br>
+      
+      
+      <% if current_user.isAdmin? %>
+        <%= f.select :driverID_id, options_for_select(@users.collect{|u| [u.name+ ' ' +u.surname, u.id] }, @vehicle.driverID_id) %>
+      <% elsif %>
+         <%= f.text_field :driverID_id, :value => current_user.id, :disabled => true %>
+      <% end %>
+    </td>
+    
+  </tr>
+  <tr>
+    <td><%= f.label :brand %><br> <%= f.text_field :brand %></td>
+    <td><%= f.label :model %><br> <%= f.text_field :model %></td>
+  </tr>
+  <tr>
+   <td>
+    <p>capacity of your car (Number of packages)</p>
+    <p border=1><%= f.label :packagesCat1, "Category 1" %> <%= f.number_field :packagesCat1 %></br>
+    <%= f.label :packagesCat2, "Category 2" %> <%= f.number_field :packagesCat2 %></br>
+    <%= f.label :packagesCat3, "Category 3" %> <%= f.number_field :packagesCat3 %></br></p>
+    </td>
+    <td><%= f.label :isFull %><br> <%= f.check_box :isFull %></td>
+  </tr>
+  <tr>
+    <td colspan=2><%= f.submit %></td>
+  </tr>
+  
+</table>
+
+
 <% end %>

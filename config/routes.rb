@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :bank_accounts
   resources :vehicles
   resources :reviews
-  devise_for :users
+  devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :location_logs
   resources :categories

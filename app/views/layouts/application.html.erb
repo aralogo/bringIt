@@ -28,6 +28,8 @@
           <p></p>
           <% if user_signed_in? %>
             <div>
+              <%= link_to '+ New Journey', new_journey_path, :method => :get, class: "btn btn-secondary" %>
+              <%= link_to '+ New Package', new_package_path, :method => :get, class: "btn btn-secondary" %>
               <%= current_user.name %> 
               <%= link_to 'Profile', edit_user_registration_path, :method => :get, class: "btn btn-primary" %>
               <%= link_to 'Sign out', destroy_user_session_path, :method => :delete, class: "btn btn-primary" %></div>

@@ -2,7 +2,7 @@
 
 <h1>Listing Vehicles</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Numberplate</th>
@@ -21,7 +21,7 @@
     <% @vehicles.each do |vehicle| %>
       <tr>
         <td><%= vehicle.numberPlate %></td>
-        <td><%= vehicle.driverID %></td>
+        <td><%= vehicle.driverID_id %></td>
         <td><%= vehicle.model %></td>
         <td><%= vehicle.brand %></td>
         <td><%= vehicle.isFull %></td>

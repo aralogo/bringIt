@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
-  before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_vehicle, only: [:show, :edit, :update, :destroy, :authenticate_admin!]
+  before_action :authenticate_admin!, only: [ :index, :edit, :new, :update, :destroy]
+  
   # GET /vehicles
   # GET /vehicles.json
   def index
@@ -10,15 +11,18 @@ class VehiclesController < ApplicationController
   # GET /vehicles/1
   # GET /vehicles/1.json
   def show
+    @driver = User.find(@vehicle.driverID_id)
   end
 
   # GET /vehicles/new
   def new
     @vehicle = Vehicle.new
+    @users = User.all
   end
 
   # GET /vehicles/1/edit
   def edit
+    @users = User.all
   end
 
   # POST /vehicles
@@ -71,4 +75,27 @@ class VehiclesController < ApplicationController
     def vehicle_params
       params.require(:vehicle).permit(:numberPlate, :driverID_id, :model, :brand, :isFull, :packagesCat1, :packagesCat2, :packagesCat3)
     end
+    
+    def authenticate_admin!
+      if current_user
+        # the user is signed in
+        if !current_user.isAdmin?
+          # registered user but not an admin!
+            if params[:id].present?  #check for the case that try to go to index (for gral display)
+              unless @vehicle.driverID_id == current_user.id
+              #trying crud in not your things 
+                flash[:notice] = 'Access denied as you are not owner of this data'
+                redirect_to root_path 
+              end 
+            else
+               flash[:notice] = 'You are not admin!!'
+                redirect_to root_path 
+            end
+        end
+      else
+        redirect_to :new_user_session
+        flash[:notice] = 'You need to login to continue'
+      end
+    end
+
 end
