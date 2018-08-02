@@ -1,0 +1,67 @@
+<%= form_for(@match) do |f| %>
+  <% if @match.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@match.errors.count, "error") %> prohibited this match from being saved:</h2>
+
+      <ul>
+      <% @match.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<table class="table">
+  <tr>
+    <td>
+      <%= f.label :journeyID_id %><br>
+      <%= f.text_field :journeyID_id, value: @journey.id, :readonly => true %>
+    </td>
+    <td>
+      <% if @packages.empty? %>
+        <%=link_to "create a package", new_package_path %>
+      <%else%>
+      <%= f.label :packageID_id %><br>
+      <!--< %= f.select @packages %>-->
+      <%= f.select :packageID_id, options_for_select(@packages.collect{|pac| ['category '+pac.category_id.to_s, pac.id]} ) %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :origin_id %><br>
+      <%= f.text_field :origin_id, value: @journey.origin_id, :readonly => true %>
+    </td>
+    <td>
+      <%= f.label :destiny_id %><br>
+      <%= f.text_field :destiny_id, value: @journey.destiny_id, :readonly => true %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :originTime %><br>
+      <%= f.datetime_select :originTime, default: @journey.originTime, :readonly => true %>
+    </td>
+    <td>
+      <%= f.label :destinyTime %><br>
+      <%= f.datetime_select :destinyTime, default: @journey.destinyTime, :readonly => true %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :acceptTime %><br>
+      <%= f.datetime_select :acceptTime, default: Date.today, :readonly => true %>
+    </td>
+    <td>
+      <%= f.label :price %><br>
+      <%= f.text_field :price, value: @journey.priceTotal, :readonly => true %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2 align="right">
+      <%= f.submit %>
+    </td>
+  </tr>
+</table>
+    
+<% end %>

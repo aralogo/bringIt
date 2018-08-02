@@ -1,9 +1,9 @@
 class Match < ActiveRecord::Base
-  belongs_to :journeyID, :class_name => "Journey"
+  belongs_to :journey, :class_name => "Journey"
   belongs_to :origin, :class_name => "Location"
   belongs_to :destiny, :class_name => "Location"
-  belongs_to :packageID, :class_name => "Package"
-  has_one :ContractOrigin
+  belongs_to :package, :class_name => "Package"
+  has_one :contractOrigin
   
-  validates :journeyID, :origin, :destiny, :originTime, :destinyTime, :packageID, :acceptTime, :price, presence: true
+  validates :journeyID_id, :origin, :destiny, :originTime, :destinyTime, :packageID_id, :acceptTime, :price, presence: true
 end

@@ -16,6 +16,11 @@ class MatchesController < ApplicationController
   def new
     @match = Match.new
   end
+  def newMatchfromJourney
+    @match = Match.new
+    @journey = Journey.find(params[:id])
+    @packages = Package.where("user_id == ? and status == 'pending'", @journey.driverID_id)
+  end
 
   # GET /matches/1/edit
   def edit

@@ -4,12 +4,12 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  has_one :BankAccount
-  has_many :Package
+  has_one :bankAccount
+  has_many :packages
   has_many :reviewby, :class_name => "Review"
   has_many :reviewOn, :class_name => "Review"
-  has_many :Journey
-  has_one :Vehicle
+  has_many :journeys
+  has_one :vehicle
   
   
   validates :email, :name,:surname, :DOB, :phone, presence: true

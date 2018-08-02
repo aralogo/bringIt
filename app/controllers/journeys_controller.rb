@@ -43,7 +43,14 @@ class JourneysController < ApplicationController
     if @journey.intermediate3_id.nil?
       @journey.build_intermediate3
     end
+  end
   
+  def showDetails
+    @journey = Journey.find(params[:id])
+    @user = User.find(@journey.driverID_id)
+    @vehicles = Vehicle.where("driverID_id == ?",@user.id)
+    @vehicle = @vehicles[0]
+    @categories = Category.all
   end
   
   def search 
@@ -75,6 +82,8 @@ class JourneysController < ApplicationController
       # if O is i3 then D can be des
       # visualise all the possibilities
       
+    else 
+      @journeys = Journey.all
     end
   end
 

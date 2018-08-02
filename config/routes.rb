@@ -9,13 +9,19 @@ Rails.application.routes.draw do
   resources :bank_accounts
   resources :vehicles
   resources :reviews
+  #devise_for :users
   devise_for :users, :controllers => { registrations: 'registrations' }
 
   resources :location_logs
   resources :categories
-  post 'search' => 'journeys#search'
   
-  #devise_for :users
+  post 'search' => 'journeys#search'
+  get 'journeydetails/:id' => 'journeys#showDetails' , :as => :journey_details
+  get 'newMatchfromJourney/:id' => 'matches#newMatchfromJourney', :as => :matchJourney
+ 
+ 
+  #not used 
+  get 'vehicleOwn' => 'vehicles#indexOwn', :as => :vehiclesUser
   
   get '/about' => 'site#about'
   get '/contact' => 'site#contact'

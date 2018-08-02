@@ -1,0 +1,76 @@
+<p id="notice"><%= notice %></p>
+
+<table class="table" style="width:60%; float:left">
+  <tr>
+    <td>
+      <strong>Origin:</strong>
+        <%= @journey.origin.city %>
+    </td>
+    <td><strong>Origin time:</strong><%= @journey.originTime %></td>
+  </tr>
+  <% if (@journey.intermediate1.city != "") %>
+  <tr>
+    <td><strong>Intermediate1:</strong><%= @journey.intermediate1.city %></td>
+    <td><strong>Price Origin-intermediate1 :</strong> <%= @journey.price01 %></td>
+  </tr>
+  <% end %>
+  <% if (@journey.intermediate2.city != "") %>
+  <tr>
+    <td><strong>Intermediate2:</strong><%= @journey.intermediate2.city %></td>
+    <td><strong>Price intermediate1-intermediate2:</strong><%= @journey.price12 %></td>
+  </tr>
+  <% end %>
+  <% if (@journey.intermediate3.city != "") %>
+  <tr>
+    <td><strong>Intermediate3:</strong><%= @journey.intermediate3.city %></td>
+    <td><strong>Price intermediate2-intermediate3:</strong> <%= @journey.price23 %></td>
+  </tr>
+  <% end %>
+  <tr>
+    <td>
+      <strong>Destiny:</strong>
+      <% if (@journey.destiny != nil) %>
+        <%= @journey.destiny.city %>
+      <% end %>
+    </td>
+    <td><strong>Destination time:</strong><%= @journey.destinyTime %></td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Driver:</strong>
+      <%= mail_to @user.email do %>
+        <%= @user.email %>
+      <% end %>
+    </td>
+  </tr>
+  </table>
+  <table class="table" style="width:35%; float:right">
+  <tr>
+    <td><strong>Price Total:</strong><%= @journey.priceTotal %></td>
+  </tr>
+  <tr>
+    <td>
+      <% if @vehicle.isFull? %>
+        Vehicle is Full sorry!
+      <% else %>
+      (max capacities)
+        <% @categories.each do |cat| %>
+          <div>Category <%= cat.id %>: <%= cat.max_length %>x<%= cat.max_width %>x<%= cat.max_height %>, <%= cat.max_height %> Kg</div>
+        <% end %>
+        <%= image_tag "categories.png", :width => 120, :height =>120 %>
+      <% end %>
+    </td>
+  </tr>
+ 
+</table>
+
+
+
+<div class="container" id="links" style="width:100%; float:left">
+  <!--< %= link_to 'Edit', edit_journey_path(@journey) %> |-->
+<%= link_to 'Back', :back %> | 
+<%= link_to 'Select this journey', matchJourney_path(@journey.id) %>=
+</div>
+
+
+

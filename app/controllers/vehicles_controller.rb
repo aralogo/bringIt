@@ -7,6 +7,9 @@ class VehiclesController < ApplicationController
   def index
     @vehicles = Vehicle.all
   end
+  # def indexOwn
+  #   @vehicle = Vehicle.find(current_user.id)
+  # end
 
   # GET /vehicles/1
   # GET /vehicles/1.json
@@ -73,7 +76,7 @@ class VehiclesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def vehicle_params
-      params.require(:vehicle).permit(:numberPlate, :driverID_id, :model, :brand, :isFull, :packagesCat1, :packagesCat2, :packagesCat3)
+      params.require(:vehicle).permit( :numberPlate, :driverID_id, :model, :brand, :isFull, :packagesCat1, :packagesCat2, :packagesCat3)
     end
     
     def authenticate_admin!

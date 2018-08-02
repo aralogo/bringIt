@@ -15,6 +15,23 @@
  */
 
 @import "bootstrap";
+body{
+    background: white;
+}
+
+caption { 
+    display: table-caption;
+    text-align: center;
+    color: #CC6633;
+}
+
+.search{
+    background: #006699;
+    color: #CC6633;
+    border-radius: 25px;
+    position: relative;
+    top: 100px;
+}
 
 .navbar-inverse {
     color: grey;

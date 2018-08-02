@@ -3,13 +3,13 @@
     <% @journeys.each do |journey| %>
       <tr>
         
-        <td><h3><%= journey.origin_id %></h3></td>
-        <td><%= journey.destiny_id %></td>
-        <td><%= journey.originTime %></td>
+        <td><h3><%= journey.origin.city %></h3></td>
+        <td><h3><%= journey.destiny.city %></h3></td>
+        <td><%= (journey.originTime).strftime("%m/%d/%Y %I:%M%p") %></td>
         
         
         
-        <td><%= link_to 'Show', journey %></td>
+        <td><%= link_to 'Show', journey_details_path(journey) %></td>
         <!--<td>< %= link_to 'Reviews', journey_reviews_path(product) %></td>-->
         
       </tr>

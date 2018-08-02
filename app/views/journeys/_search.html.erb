@@ -1,6 +1,8 @@
 
 <%= form_tag("/search", :method => "post") do %>
-<table>
+<table class="table">
+    
+        <caption><h3><b>Search</b></h3></caption>
     <!--<tr>-->
     <!--    <td>-->
     <!--        <h5>Search by Keyword</h5>-->
@@ -15,11 +17,11 @@
             <%= text_field_tag(:origin) %>
             <%= label_tag(:destiny, "To") %>
             <%= text_field_tag(:destiny) %>
+        </td>
+        <td>
             <%= label_tag(:origin_date) %>
             <%= date_field_tag(:origin_date, Date.today) %>
         </td>
-    </tr>
-    <tr>
         <td>
             <%= submit_tag("Search") %>
         </td>
