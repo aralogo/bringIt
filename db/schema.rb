@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180726154420) do
+ActiveRecord::Schema.define(version: 20180803163105) do
 
   create_table "bank_accounts", force: :cascade do |t|
     t.integer  "ISBN"
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180726154420) do
     t.decimal  "price"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.boolean  "isPaid"
   end
 
   add_index "matches", ["destiny_id"], name: "index_matches_on_destiny_id"

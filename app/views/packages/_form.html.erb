@@ -11,19 +11,49 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.text_field :category_id %>
-  </div>
-  <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status %><br>
-    <%= f.text_field :status %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <td>
+        <% categories= Category.all %>
+        <%= f.label :category_id %><br>
+        <!--< %= f.text_field :category_id %>-->
+        <% if @package.new_record? %>  <!--creating -->
+           <%= f.select :category_id, options_for_select(categories.collect{|cat| [ 'Category ' +cat.id.to_s, cat.id] }) %>
+        <% else %>    <!--editing --> 
+           <%= f.select :category_id, options_for_select(categories.collect{|cat| [ 'Category ' +cat.id.to_S, cat.id] }, @package.category_id) %>
+        <% end %>
+      </td>
+    </tr>
+  <tr>
+    <td>
+      <% if current_user.isAdmin? %>
+        <% users= User.all %>
+        <%= f.label :user_id, "user id" %><br>
+        <% if @package.new_record? %>  <!--creating -->
+           <%= f.select :user_id, options_for_select(users.collect{|u| [ u.name +' ' +u.surname, u.id] }) %>
+        <% else %>    <!--editing --> 
+           <%= f.select :user_id, options_for_select(users.collect{|u| [ u.name +' ' +u.surname, u.id] }, current_user.id) %>
+        <% end %>
+      <% else %>
+        <%= f.label :user_id, "your user id" %><br>
+        <%= f.text_field :user_id, value: current_user.id, :readonly=>true %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :status %><br>
+      <% if current_user.isAdmin? %>  <!--admin -->
+           <%= f.text_field :status, value: "pending" %>
+        <% else %>    <!--no admin, no choice --> 
+           <%= f.text_field :status, value: "pending", :readonly => true %>
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.submit %>
+    </td>
+  </tr>
+</table>
 <% end %>

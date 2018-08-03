@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+
 
 <h1>Listing Matches</h1>
 
@@ -20,12 +20,12 @@
   <tbody>
     <% @matches.each do |match| %>
       <tr>
-        <td><%= match.journeyID %></td>
-        <td><%= match.origin %></td>
-        <td><%= match.destiny %></td>
+        <td><%= match.journeyID_id %></td>
+        <td><%= match.origin_id %></td>
+        <td><%= match.destiny_id %></td>
         <td><%= match.originTime %></td>
         <td><%= match.destinyTime %></td>
-        <td><%= match.packageID %></td>
+        <td><%= match.packageID_id %></td>
         <td><%= match.acceptTime %></td>
         <td><%= match.price %></td>
         <td><%= link_to 'Show', match %></td>

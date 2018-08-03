@@ -1,19 +1,26 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Category:</strong>
-  <%= @package.category %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @package.user %>
-</p>
+<table class="table">
+  <tr>
+    <td>
+      <strong>Category:</strong>
+      <%= @package.category_id %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>User:</strong>
+      <%= @package.user_id %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Status:</strong>
+      <%= @package.status %>
+    </td>
+  </tr>
+</table>
 
-<p>
-  <strong>Status:</strong>
-  <%= @package.status %>
-</p>
 
 <%= link_to 'Edit', edit_package_path(@package) %> |
 <%= link_to 'Back', packages_path %>

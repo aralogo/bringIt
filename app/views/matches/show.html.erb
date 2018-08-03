@@ -1,44 +1,50 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Journeyid:</strong>
-  <%= @match.journeyID_id %>
-</p>
 
-<p>
-  <strong>Origin:</strong>
-  <%= @match.origin_id %>
-</p>
+<table class="table">
+  <tr>
+    <td>
+      <strong>Journeyid:</strong>
+      <%= @match.journeyID_id %>
+    </td>
+    <td>
+      <strong>Accepttime:</strong>
+      <%= @match.acceptTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Origin:</strong>
+      <%= @match.origin_id %>
+    </td>
+    <td>
+      <strong>Origintime:</strong>
+      <%= @match.originTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Destiny:</strong>
+      <%= @match.destiny_id %>
+    </td>
+    <td>
+      <strong>Destinytime:</strong>
+      <%= @match.destinyTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Packageid:</strong>
+      <%= @match.packageID_id %>
+    </td>
+    <td>
+      <strong>Price:</strong>
+      <%= @match.price %>
+    </td>
+  </tr>
+</table>
+  
 
-<p>
-  <strong>Destiny:</strong>
-  <%= @match.destiny_id %>
-</p>
 
-<p>
-  <strong>Origintime:</strong>
-  <%= @match.originTime %>
-</p>
-
-<p>
-  <strong>Destinytime:</strong>
-  <%= @match.destinyTime %>
-</p>
-
-<p>
-  <strong>Packageid:</strong>
-  <%= @match.packageID_id %>
-</p>
-
-<p>
-  <strong>Accepttime:</strong>
-  <%= @match.acceptTime %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @match.price %>
-</p>
 
 <%= link_to 'Edit', edit_match_path(@match) %> |
 <%= link_to 'Back', matches_path %>

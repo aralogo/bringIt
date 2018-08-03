@@ -15,9 +15,12 @@ class MatchesController < ApplicationController
   # GET /matches/new
   def new
     @match = Match.new
+    
   end
+  
   def newMatchfromJourney
     @match = Match.new
+    
     @journey = Journey.find(params[:id])
     @packages = Package.where("user_id == ? and status == 'pending'", @journey.driverID_id)
   end
@@ -25,18 +28,27 @@ class MatchesController < ApplicationController
   # GET /matches/1/edit
   def edit
   end
+  
+  def payMatch
+    update_attribute
+  end
 
   # POST /matches
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-
+    @package = Package.find (@match.packageID_id)
+   
+    
     respond_to do |format|
       if @match.save
         format.html { redirect_to @match, notice: 'Match was successfully created.' }
-        format.json { render :show, status: :created, location: @match }
+        format.json { render :payMatch, status: :created, location: @match }
+        # to change the status of the package that already have a ride
+        @package.update_attribute(:status, "matched")
+        @package.save
       else
-        format.html { render :new }
+        format.html { render :newMatchfromJourney }
         format.json { render json: @match.errors, status: :unprocessable_entity }
       end
     end
@@ -59,10 +71,17 @@ class MatchesController < ApplicationController
   # DELETE /matches/1
   # DELETE /matches/1.json
   def destroy
+    @package = Package.find (@match.packageID_id)
     @match.destroy
+    
+    #add to cancel payment (paypal returns)
+    
     respond_to do |format|
       format.html { redirect_to matches_url, notice: 'Match was successfully destroyed.' }
       format.json { head :no_content }
+      # change the status of the package to be available to be matched
+      @package.update_attribute(:status, "pending")
+      @package.save
     end
   end
 

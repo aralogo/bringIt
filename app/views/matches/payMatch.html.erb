@@ -1,0 +1,58 @@
+
+
+<table class="table">
+  <tr>
+    <td>
+      <strong>Journeyid:</strong>
+      <%= @match.journeyID_id %>
+    </td>
+    <td>
+      <strong>Accepttime:</strong>
+      <%= @match.acceptTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Origin:</strong>
+      <%= @match.origin_id %>
+    </td>
+    <td>
+      <strong>Origintime:</strong>
+      <%= @match.originTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Destiny:</strong>
+      <%= @match.destiny_id %>
+    </td>
+    <td>
+      <strong>Destinytime:</strong>
+      <%= @match.destinyTime %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <strong>Packageid:</strong>
+      <%= @match.packageID_id %>
+    </td>
+    <td>
+      <strong>Price:</strong>
+      <%= @match.price %>
+    </td>
+  </tr>
+</table>
+  
+
+ <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+  <input type="hidden" name="cmd" value="_xclick">
+  <input type="hidden" name="business" value="bringit.project.ara@gmail.com">
+  <input type="hidden" name="item_name" value="BringIt Match Number <%= @match.id %>">
+  <input type="hidden" name="currency_code" value="EUR"><input type="hidden" name="amount" value="<%= @match.price %>">
+  <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_buynow_LG.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+  <input type="hidden" name="return" value="bring-it-aralogo-1.c9users.io/site/thanks" >
+<!--<input type="hidden" name="notify_url" value="https://rails-container-liamme.c9users.io/aboutSend/< %= @orderNum %>">-->
+</form>
+
+<!--< %= link_to 'Edit', edit_match_path(@match) %> |-->
+<%= link_to 'Back', matches_path %>

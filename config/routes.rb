@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   post 'search' => 'journeys#search'
   get 'journeydetails/:id' => 'journeys#showDetails' , :as => :journey_details
   get 'newMatchfromJourney/:id' => 'matches#newMatchfromJourney', :as => :matchJourney
- 
+  
  
   #not used 
   get 'vehicleOwn' => 'vehicles#indexOwn', :as => :vehiclesUser
@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get '/about' => 'site#about'
   get '/contact' => 'site#contact'
   get '/home' => 'site#home'
+  get '/thanks' => 'site#thanks'
     
   root :to => "site#home"
   
