@@ -11,19 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :position_time %><br>
-    <%= f.datetime_select :position_time %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <td><%= f.label :latitude %><br> <%= f.text_field :latitude %></td>
+      <td> <%= f.label :longitude %><br> <%= f.text_field :longitude %></td>
+    </tr>
+    <tr>
+      <td colspan=2> <%= f.label :position_time %><br> <%= f.datetime_select :position_time %></td>
+    </tr>
+    <tr>
+      <td colspan=2 align="right"><%= f.submit %></td>
+    </tr>
+  </table>
+  
 <% end %>

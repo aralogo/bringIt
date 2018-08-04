@@ -52,7 +52,7 @@
      <tr>
       <td colspan=2>
         <%= f.label :destiny_date %><br>
-        <%= f.datetime_select :destiny_date, value: (DateTime.now).strftime("%m/%d/%Y %I:%M%p"), :readonly => true %>
+        <%= f.datetime_select :destiny_date, value: (DateTime.now).strftime("%d/%m/%Y %I:%M%p"), :readonly => true %>
       </td>
     </tr>
     <tr>

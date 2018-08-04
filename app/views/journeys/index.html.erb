@@ -25,7 +25,7 @@
     <% @journeys.each do |journey| %>
       <tr>
         <td><%= journey.origin.city %></td>
-        <td><%= (journey.originTime).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (journey.originTime).strftime("%d/%m/%Y %I:%M%p") %></td>
         <% if journey.intermediate1.city != "" %>
           <td><%= journey.intermediate1.city %></td>
           <td><%= journey.price01 %></td>
@@ -48,7 +48,7 @@
           <td> n/a </td>
         <% end %>
         <td><%= journey.destiny.city %></td>
-        <td><%= (journey.destinyTime).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (journey.destinyTime).strftime("%d/%m/%Y %I:%M%p") %></td>
         <td><%= journey.priceTotal %></td>
         <td><%= journey.driverID_id %></td>
         <td><%= link_to 'Show', journey %></td>

@@ -20,7 +20,7 @@
         </td>
         <td>
             <%= label_tag(:origin_date) %>
-            <%= date_field_tag(:origin_date, Date.today) %>
+            <%= date_field_tag(:origin_date, (Date.today).strftime("%d/%m/%Y")) %>
         </td>
         <td>
             <%= submit_tag("Search") %>

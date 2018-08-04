@@ -38,6 +38,10 @@
       <!--in the future can incorporate digital signature or actually a signature capture recognition-->
       <td>
         <!--to know the sender-->
+        <!--when edit we do not have the param passed but we have the contract created-->
+        <% if !@contract_origin.new_record? %>
+          <% @match = Match.find(@contract_origin.matchID_id)%>
+        <% end %>
         <% thePackage =Package.find(@match.packageID_id)%>
         <% sender = User.find(thePackage.user_id)%>
             
@@ -51,7 +55,7 @@
     <tr>
       <td colspan=2>
         <%= f.label :origin_date %><br>
-        <%= f.text_field :origin_date, value: (DateTime.now).strftime("%m/%d/%Y %I:%M%p"), :readonly => true %>
+        <%= f.text_field :origin_date, value: (DateTime.now).strftime("%d/%m/%Y %I:%M%p"), :readonly => true %>
       </td>
     </tr>
     <tr>

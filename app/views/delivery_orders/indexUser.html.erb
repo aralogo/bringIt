@@ -7,8 +7,8 @@
     <tr>
       <th>Match id</th>
       <th>Sender</th>
-      <th>Issigned driver</th>
-      <th>Issigned sender</th>
+      <th>Driver agreed</th>
+      <th>Sender agreed</th>
       <th>Destiny date</th>
       <th>Comment</th>
       <th colspan="3"></th>
@@ -18,7 +18,7 @@
   <tbody>
     <% @delivery_orders.each do |delivery| %>
       <tr>
-        <td><%= contract_origin.matchID_id %></td>
+        <td><%= delivery.matchID_id %></td>
         <td>
           <!--to know the sender-->
             <!--take match from contract at origin-->
@@ -32,7 +32,7 @@
         </td>
         <td><%= delivery.isSigned_Driver %></td>
         <td><%= delivery.isSigned_Receiver %></td>
-        <td><%= (delivery.destiny_date).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (delivery.destiny_date).strftime("%d/%m/%Y %I:%M%p") %></td>
         <td><%= delivery.comment %></td>
         
         <!--<td>< %= link_to 'Show', contract_origin %></td>-->
@@ -45,4 +45,4 @@
 
 <br>
 
-<%= link_to 'New Contract origin', new_contract_origin_path %>
+<!--< %= link_to 'New Contract origin', new_contract_origin_path %>-->

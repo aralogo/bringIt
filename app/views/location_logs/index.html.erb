@@ -2,7 +2,7 @@
 
 <h1>Listing Location Logs</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Latitude</th>
@@ -17,7 +17,7 @@
       <tr>
         <td><%= location_log.latitude %></td>
         <td><%= location_log.longitude %></td>
-        <td><%= location_log.position_time %></td>
+        <td><%= (location_log.position_time).strftime("%d/%m/%Y %I:%M%p") %></td>
         <td><%= link_to 'Show', location_log %></td>
         <td><%= link_to 'Edit', edit_location_log_path(location_log) %></td>
         <td><%= link_to 'Destroy', location_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>

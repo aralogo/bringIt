@@ -14,28 +14,30 @@
  
  <table class="table">
     <thead class="table_heading">
-      <tr><td><%= f.label :id %> <%= @category.id %></td></tr>
-      </thead>
+      <tr>
+        <td><%= f.label :id %> <%= @category.id %></td>
+      </tr>
+    </thead>
     <tr>
-      <td class="text-right">
+      <td>
         <%= f.label :max_length %><br>
         <%= f.number_field :max_length %>
       </td>
-      <td class="text-right">
+      <td>
         <%= f.label :max_width %><br>
         <%= f.number_field :max_width %>
       </td>
-      <td class="text-right">
+      <td>
         <%= f.label :max_height %><br>
         <%= f.number_field :max_height %>
       </td>
-      <td class="text-right">
+      <td>
         <%= f.label :max_weight %><br>
         <%= f.number_field :max_weight %>
       </td>
     </tr>
     <tr>
-      <td class="actions" colspan="4">
+      <td align="right" colspan="4">
         <%= f.submit %>
       </td>
     </tr>

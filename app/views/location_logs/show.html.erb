@@ -1,19 +1,16 @@
 
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @location_log.latitude %>
-</p>
+<table class="table">
+  <tr>
+    <td><strong>Latitude:</strong> <%= @location_log.latitude %></td>
+    <td><strong>Longitude:</strong> <%= @location_log.longitude %></td>
+  </tr>
+  <tr>
+    <td colspan=2><strong>Position time:</strong> <%= (@location_log.position_time).strftime("%d/%m/%Y %I:%M%p") %></td>
+  </tr>
+ 
+</table>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @location_log.longitude %>
-</p>
-
-<p>
-  <strong>Position time:</strong>
-  <%= @location_log.position_time %>
-</p>
 
 <%= link_to 'Edit', edit_location_log_path(@location_log) %> |
 <%= link_to 'Back', location_logs_path %>

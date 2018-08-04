@@ -1,5 +1,6 @@
 class PackagesController < ApplicationController
   before_action :set_package, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
 
   # GET /packages
   # GET /packages.json
@@ -70,5 +71,27 @@ class PackagesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def package_params
       params.require(:package).permit(:category_id, :user_id, :status)
+    end
+    
+    def authenticate_admin!
+      if current_user
+        # the user is signed in
+        if !current_user.isAdmin?
+          # registered user but not an admin!
+            if params[:id].present?  #check for the case that try to go to index (for gral display)
+              unless @package.user_id == current_user.id
+              #trying crud in not your things 
+                flash[:notice] = 'Access denied as you are not owner of this data'
+                redirect_to root_path 
+              end 
+            else
+              flash[:notice] = 'You are not admin!!'
+                redirect_to root_path 
+            end
+        end
+      else
+        redirect_to :new_user_session
+        flash[:notice] = 'You need to login to continue'
+      end
     end
 end

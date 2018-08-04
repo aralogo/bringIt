@@ -32,7 +32,7 @@
         </td>
         <td><%= contract_origin.isSigned_Driver %></td>
         <td><%= contract_origin.isSigned_Sender %></td>
-        <td><%= (contract_origin.origin_date).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (contract_origin.origin_date).strftime("%d/%m/%Y %I:%M%p") %></td>
         <td><%= contract_origin.comment %></td>
         
         <td><%= link_to 'Create Delivery Contract', new_delivery_order_path(:matchID_id => contract_origin.matchID_id) %></td>

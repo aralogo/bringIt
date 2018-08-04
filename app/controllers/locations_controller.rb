@@ -1,5 +1,6 @@
 class LocationsController < ApplicationController
   before_action :set_location, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
 
   # GET /locations
   # GET /locations.json
@@ -70,5 +71,19 @@ class LocationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
       params.require(:location).permit(:address1, :address2, :city, :county, :country)
+    end
+    
+    def authenticate_admin!
+      if current_user
+        # the user is signed in
+        if !current_user.isAdmin?
+          # registered user but not an admin!
+              flash[:notice] = 'You are not admin!!'
+              redirect_to root_path 
+        end
+      else
+        redirect_to :new_user_session
+        flash[:notice] = 'You need to login to continue'
+      end
     end
 end

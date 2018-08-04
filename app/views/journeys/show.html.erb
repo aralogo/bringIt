@@ -6,7 +6,7 @@
       <strong>Origin:</strong>
         <%= @journey.origin.city %>
     </td>
-    <td><strong>Origin time:</strong><%= @journey.originTime %></td>
+    <td><strong>Origin time:</strong><%= (@journey.originTime).strftime("%d/%m/%Y %I:%M%p") %></td>
   </tr>
   <% if (@journey.intermediate1.city != "") %>
   <tr>
@@ -33,7 +33,7 @@
         <%= @journey.destiny.city %>
       <% end %>
     </td>
-    <td><strong>Destination time:</strong><%= @journey.destinyTime %></td>
+    <td><strong>Destination time:</strong><%= (@journey.destinyTime).strftime("%d/%m/%Y %I:%M%p") %></td>
   </tr>
   <tr>
     <td><strong>Driver:</strong><%= @user.email %></td>

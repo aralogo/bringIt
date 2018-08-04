@@ -11,19 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :ISBN %><br>
-    <%= f.number_field :ISBN %>
-  </div>
-  <div class="field">
-    <%= f.label :accountHolder %><br>
-    <%= f.text_field :accountHolder %>
-  </div>
-  <div class="field">
-    <%= f.label :userID_id %><br>
-    <%= f.text_field :userID_id %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <table class="table">
+    <tr>
+      <td> <%= f.label :ISBN, "IBAN" %><br> <%= f.number_field :ISBN %></td>
+    </tr>
+    <tr>
+      <td>
+        <%= f.label :accountHolder %><br> <%= f.text_field :accountHolder %>
+      </td>
+    </tr>
+    <tr>
+      <td> 
+        <%= f.label :userID_id %><br>
+        <% if current_user.isAdmin? %>
+          <% users = User.all %>
+          <%= f.select :userID_id, options_for_select(users.collect{|u| [ u.name+' '+u.surname, u.id] }, :userID_id) %>
+        <% else %>
+          <%= f.text_field :userID_id, value: current_user.id, :readonly => true %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <td align="right"><%= f.submit %></td>
+    </tr>
+  </table>
+   
 <% end %>

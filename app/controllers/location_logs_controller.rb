@@ -1,6 +1,7 @@
 class LocationLogsController < ApplicationController
   before_action :set_location_log, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
+ 
   # GET /location_logs
   # GET /location_logs.json
   def index
@@ -70,5 +71,19 @@ class LocationLogsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_log_params
       params.require(:location_log).permit(:latitude, :longitude, :position_time)
+    end
+    
+    def authenticate_admin!
+      if current_user
+        # the user is signed in
+        if !current_user.isAdmin?
+          # registered user but not an admin!
+              flash[:notice] = 'You are not admin!!'
+              redirect_to root_path 
+        end
+      else
+        redirect_to :new_user_session
+        flash[:notice] = 'You need to login to continue'
+      end
     end
 end

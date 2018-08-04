@@ -11,19 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :reviewOn_id %><br>
-    <%= f.text_field :reviewOn_id %>
-  </div>
-  <div class="field">
-    <%= f.label :reviewBy_id %><br>
-    <%= f.text_field :reviewBy_id %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<table class="table">
+  <tr>
+    <td><%= f.label :reviewOn_id %><br> <%= f.text_field :reviewOn_id %></td>
+    <td><%= f.label :reviewBy_id %><br> <%= f.text_field :reviewBy_id %></td>
+  </tr>
+  <tr>
+    <td colspan=2><%= f.label :comment %><br> <%= f.text_area :comment %></td>
+  </tr>
+  <tr>
+    <td colspan=2 align="right"><%= f.submit %></td>
+  </tr>
+</table>
+ 
 <% end %>

@@ -1,19 +1,17 @@
 
+<table class="table">
+  <tr>
+    <!--i confused the book and bank names :D to be change in version 2-->
+    <td><strong>IBAN:</strong> <%= @bank_account.ISBN %></td>
+  </tr>
+  <tr>
+    <td><strong>Accountholder:</strong> <%= @bank_account.accountHolder %></td>
+  </tr>
+  <tr>
+    <td> <strong>User id:</strong> <%= @bank_account.userID %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Isbn:</strong>
-  <%= @bank_account.ISBN %>
-</p>
-
-<p>
-  <strong>Accountholder:</strong>
-  <%= @bank_account.accountHolder %>
-</p>
-
-<p>
-  <strong>Userid:</strong>
-  <%= @bank_account.userID %>
-</p>
 
 <%= link_to 'Edit', edit_bank_account_path(@bank_account) %> |
 <%= link_to 'Back', bank_accounts_path %>

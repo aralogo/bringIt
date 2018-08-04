@@ -1,5 +1,6 @@
 class ContractOriginsController < ApplicationController
   before_action :set_contract_origin, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :indexUser, :new, :edit, :update, :destroy]
 
   # GET /contract_origins
   # GET /contract_origins.json
@@ -79,5 +80,35 @@ class ContractOriginsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contract_origin_params
       params.require(:contract_origin).permit(:matchID_id, :isSigned_Driver, :isSigned_Sender, :origin_date, :comment)
+    end
+    
+    def authenticate_admin!
+      if current_user
+        # the user is signed in
+        if !current_user.isAdmin?
+          # registered user but not an admin!
+            if params[:id].present?  #check for the case that try to go to index (for gral display)
+              # get driver
+              theMatch = Match.find(@contract_origin.matchID_id)
+              theJourney = Journey.find(theMatch.journeyID_id)
+              # driver = User.find(theJourney.driverID_id)
+              #get sender
+              thePackage = Package.find(theMatch.packageID_id)
+              # sender = User.find(thePackage.user_id)
+              
+              unless (theJourney.driverID_id == current_user.id) or (thePackage.user_id == current_user.id)
+              #trying crud in not your things 
+                flash[:notice] = 'Access denied as you are not owner of this data'
+                redirect_to root_path 
+              end 
+            else
+              flash[:notice] = 'You are not admin!!'
+                redirect_to root_path 
+            end
+        end
+      else
+        redirect_to :new_user_session
+        flash[:notice] = 'You need to login to continue'
+      end
     end
 end
