@@ -23,8 +23,8 @@
         <td><%= match.journeyID_id %></td>
         <td><%= match.origin_id %></td>
         <td><%= match.destiny_id %></td>
-        <td><%= match.originTime %></td>
-        <td><%= match.destinyTime %></td>
+        <td><%= (match.originTime).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (match.destinyTime).strftime("%m/%d/%Y %I:%M%p") %></td>
         <td><%= match.packageID_id %></td>
         <td><%= match.acceptTime %></td>
         <td><%= match.price %></td>

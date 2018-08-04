@@ -1,29 +1,19 @@
+<table class="table">
+  <tr>
+    <td colspan=2><strong>Matchid:</strong> <%= @delivery_order.matchID_id %></td>
+  </tr>
+   <tr>
+    <td><strong>Issigned driver:</strong> <%= @delivery_order.isSigned_Driver %></td>
+    <td><strong>Issigned receiver:</strong> <%= @delivery_order.isSigned_Receiver %></td>
+  </tr>
+  <tr>
+    <td colspan=2> <strong>Destiny date:</strong> <%= @delivery_order.destiny_date %></td>
+  </tr>
+  <tr>
+    <td colspan=2> <strong>Comment:</strong> <%= @delivery_order.comment %></td>
+  </tr>
+</table>
 
-
-<p>
-  <strong>Matchid:</strong>
-  <%= @delivery_order.matchID %>
-</p>
-
-<p>
-  <strong>Issigned driver:</strong>
-  <%= @delivery_order.isSigned_Driver %>
-</p>
-
-<p>
-  <strong>Issigned receiver:</strong>
-  <%= @delivery_order.isSigned_Receiver %>
-</p>
-
-<p>
-  <strong>Destiny date:</strong>
-  <%= @delivery_order.destiny_date %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @delivery_order.comment %>
-</p>
 
 <%= link_to 'Edit', edit_delivery_order_path(@delivery_order) %> |
 <%= link_to 'Back', delivery_orders_path %>

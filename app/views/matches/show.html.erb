@@ -18,7 +18,7 @@
     </td>
     <td>
       <strong>Origintime:</strong>
-      <%= @match.originTime %>
+      <%= (@match.originTime).strftime("%m/%d/%Y %I:%M%p") %>
     </td>
   </tr>
   <tr>
@@ -28,7 +28,7 @@
     </td>
     <td>
       <strong>Destinytime:</strong>
-      <%= @match.destinyTime %>
+      <%= (@match.destinyTime).strftime("%m/%d/%Y %I:%M%p") %>
     </td>
   </tr>
   <tr>

@@ -11,27 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :matchID_id %><br>
-    <%= f.text_field :matchID_id %>
-  </div>
-  <div class="field">
-    <%= f.label :isSigned_Driver %><br>
-    <%= f.check_box :isSigned_Driver %>
-  </div>
-  <div class="field">
-    <%= f.label :isSigned_Receiver %><br>
-    <%= f.check_box :isSigned_Receiver %>
-  </div>
-  <div class="field">
-    <%= f.label :destiny_date %><br>
-    <%= f.datetime_select :destiny_date %>
-  </div>
-  <div class="field">
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+   <table class="table">
+    <tr>
+      <td colspan=2>
+        <%= f.label :matchID_id %><br>
+        <%= f.text_field :matchID_id, value: f.object.matchID_id.blank? ? @match.id : f.object.matchID_id, :readonly => true %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <p> Legal Contract text here:
+        
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et 
+        magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat
+        massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae,
+        justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend 
+        tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+        Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper 
+        ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing 
+        sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec 
+        vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla 
+        mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc.</p>
+      </td>
+    </tr>
+    <tr>
+      <!--in the future can incorporate digital signature or actually a signature capture recognition-->
+      <td>
+        <!--to know the sender-->
+        <% thePackage =Package.find(@match.packageID_id)%>
+        <% sender = User.find(thePackage.user_id)%>
+            
+        <%= f.label :isSigned_Driver, "Driver: #{current_user.name} #{current_user.surname}" %> 
+        <%= f.check_box :isSigned_Driver %></td>
+      <td>
+        <%= f.label :isSigned_Receiver, "Receiver:" %>
+        <%= f.check_box :isSigned_Receiver %>
+        (Sender: <%=sender.name%> <%=sender.surname%>)
+      </td>
+    </tr>
+     <tr>
+      <td colspan=2>
+        <%= f.label :destiny_date %><br>
+        <%= f.datetime_select :destiny_date, value: (DateTime.now).strftime("%m/%d/%Y %I:%M%p"), :readonly => true %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2>
+        <%= f.label :comment, "Comment (add name of the receiver and the id, please)" %><br>
+        <%= f.text_area :comment %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan=2 align="right"><%= f.submit %></td>
+    </tr>
+    
+  </table>
 <% end %>

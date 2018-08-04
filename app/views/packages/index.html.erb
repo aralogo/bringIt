@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Category</th>
       <th>User</th>
       <th>Status</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @packages.each do |package| %>
       <tr>
+        <td><%= package.id %></td>
         <td><%= package.category.id %></td>
         <td><%= package.user_id %></td>
         <td><%= package.status %></td>

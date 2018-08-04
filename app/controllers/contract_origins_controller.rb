@@ -6,6 +6,14 @@ class ContractOriginsController < ApplicationController
   def index
     @contract_origins = ContractOrigin.all
   end
+  
+  #to list the contracts on going to create a delivery
+  def indexUser
+    #to show a list of the matches for the user
+    @journeys = Journey.where("driverID_id == ?", current_user.id)
+    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+    @contract_origins = ContractOrigin.where("matchID_id IN (?)", @matches.ids)
+  end
 
   # GET /contract_origins/1
   # GET /contract_origins/1.json
@@ -14,6 +22,7 @@ class ContractOriginsController < ApplicationController
 
   # GET /contract_origins/new
   def new
+    @match = Match.find(params[:matchID_id])
     @contract_origin = ContractOrigin.new
   end
 
@@ -25,7 +34,7 @@ class ContractOriginsController < ApplicationController
   # POST /contract_origins.json
   def create
     @contract_origin = ContractOrigin.new(contract_origin_params)
-
+    @match = Match.find(@contract_origin.matchID_id)
     respond_to do |format|
       if @contract_origin.save
         format.html { redirect_to @contract_origin, notice: 'Contract origin was successfully created.' }

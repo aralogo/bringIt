@@ -29,11 +29,7 @@
       <% if current_user.isAdmin? %>
         <% users= User.all %>
         <%= f.label :user_id, "user id" %><br>
-        <% if @package.new_record? %>  <!--creating -->
-           <%= f.select :user_id, options_for_select(users.collect{|u| [ u.name +' ' +u.surname, u.id] }) %>
-        <% else %>    <!--editing --> 
-           <%= f.select :user_id, options_for_select(users.collect{|u| [ u.name +' ' +u.surname, u.id] }, current_user.id) %>
-        <% end %>
+        <%= f.select :user_id, options_for_select(users.collect{|u| [ u.name+' '+u.surname, u.id] }, current_user.id) %>
       <% else %>
         <%= f.label :user_id, "your user id" %><br>
         <%= f.text_field :user_id, value: current_user.id, :readonly=>true %>

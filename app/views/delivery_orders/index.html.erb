@@ -2,7 +2,7 @@
 
 <h1>Listing Delivery Orders</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Matchid</th>
@@ -17,7 +17,7 @@
   <tbody>
     <% @delivery_orders.each do |delivery_order| %>
       <tr>
-        <td><%= delivery_order.matchID %></td>
+        <td><%= delivery_order.matchID_id %></td>
         <td><%= delivery_order.isSigned_Driver %></td>
         <td><%= delivery_order.isSigned_Receiver %></td>
         <td><%= delivery_order.destiny_date %></td>

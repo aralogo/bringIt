@@ -2,7 +2,7 @@
 
 <h1>Listing Contract Origins</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Matchid</th>
@@ -17,7 +17,7 @@
   <tbody>
     <% @contract_origins.each do |contract_origin| %>
       <tr>
-        <td><%= contract_origin.matchID %></td>
+        <td><%= contract_origin.matchID_id %></td>
         <td><%= contract_origin.isSigned_Driver %></td>
         <td><%= contract_origin.isSigned_Sender %></td>
         <td><%= contract_origin.origin_date %></td>

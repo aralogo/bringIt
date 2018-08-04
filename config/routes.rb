@@ -18,7 +18,9 @@ Rails.application.routes.draw do
   post 'search' => 'journeys#search'
   get 'journeydetails/:id' => 'journeys#showDetails' , :as => :journey_details
   get 'newMatchfromJourney/:id' => 'matches#newMatchfromJourney', :as => :matchJourney
-  
+  get 'indexUser' => 'matches#indexUser', :as => :indexUserMatch
+  get 'indexUserOrigin' => 'contract_origins#indexUser', :as => :indexUserContract
+  get 'indexUserDelivery' => 'delivery_orders#indexUser', :as => :indexUserDelivery
  
   #not used 
   get 'vehicleOwn' => 'vehicles#indexOwn', :as => :vehiclesUser

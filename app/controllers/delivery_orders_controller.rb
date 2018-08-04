@@ -6,6 +6,14 @@ class DeliveryOrdersController < ApplicationController
   def index
     @delivery_orders = DeliveryOrder.all
   end
+  
+  #to list the deliveries for that user
+  def indexUser
+    #to show a list of the matches for the user
+    @journeys = Journey.where("driverID_id == ?", current_user.id)
+    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+    @delivery_orders = DeliveryOrder.where("matchID_id IN (?)", @matches.ids)
+  end
 
   # GET /delivery_orders/1
   # GET /delivery_orders/1.json
@@ -14,8 +22,10 @@ class DeliveryOrdersController < ApplicationController
 
   # GET /delivery_orders/new
   def new
+    @match = Match.find(params[:matchID_id])
     @delivery_order = DeliveryOrder.new
   end
+  
 
   # GET /delivery_orders/1/edit
   def edit
@@ -25,7 +35,8 @@ class DeliveryOrdersController < ApplicationController
   # POST /delivery_orders.json
   def create
     @delivery_order = DeliveryOrder.new(delivery_order_params)
-
+    @match = Match.find(@delivery_order.matchID_id)
+    
     respond_to do |format|
       if @delivery_order.save
         format.html { redirect_to @delivery_order, notice: 'Delivery order was successfully created.' }

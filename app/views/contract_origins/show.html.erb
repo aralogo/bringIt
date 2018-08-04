@@ -1,28 +1,23 @@
 
-<p>
-  <strong>Matchid:</strong>
-  <%= @contract_origin.matchID %>
-</p>
-
-<p>
-  <strong>Issigned driver:</strong>
-  <%= @contract_origin.isSigned_Driver %>
-</p>
-
-<p>
-  <strong>Issigned sender:</strong>
-  <%= @contract_origin.isSigned_Sender %>
-</p>
-
-<p>
-  <strong>Origin date:</strong>
-  <%= @contract_origin.origin_date %>
-</p>
-
-<p>
-  <strong>Comment:</strong>
-  <%= @contract_origin.comment %>
-</p>
+<table class="table">
+  <tr>
+    <td colspan=2><strong>Matchid:</strong> <%= @contract_origin.matchID_id %></td>
+  </tr>
+   <tr>
+    <td><strong>Issigned driver:</strong> <%= @contract_origin.isSigned_Driver %></td>
+    <td><strong>Issigned sender:</strong> <%= @contract_origin.isSigned_Sender %></td>
+  </tr>
+  <tr>
+    <td colspan=2> <strong>Origin date:</strong> <%= @contract_origin.origin_date %></td>
+  </tr>
+  <tr>
+    <td colspan=2> <strong>Comment:</strong> <%= @contract_origin.comment %></td>
+  </tr>
+</table>
 
 <%= link_to 'Edit', edit_contract_origin_path(@contract_origin) %> |
-<%= link_to 'Back', contract_origins_path %>
+<% if current_user.isAdmin? %>
+  <%= link_to 'Back', contract_origins_path %>
+<% else %>
+  <%= link_to 'Back', indexUserContract_path %>
+<% end %>

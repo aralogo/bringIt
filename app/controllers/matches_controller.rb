@@ -6,6 +6,13 @@ class MatchesController < ApplicationController
   def index
     @matches = Match.all
   end
+  
+  #to list the ones for the user to create a contract
+  def indexUser
+    #to show a list of the matches for the user
+    @journeys = Journey.where("driverID_id == ?", current_user.id)
+    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+  end
 
   # GET /matches/1
   # GET /matches/1.json

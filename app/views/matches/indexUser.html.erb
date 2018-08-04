@@ -1,0 +1,51 @@
+
+
+<h1>Listing Matches</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Journeyid</th>
+      <th>Sender</th>
+      <th>Origin</th>
+      <th>Destiny</th>
+      <th>Origintime</th>
+      <th>Destinytime</th>
+      <th>Packageid</th>
+      <th>Accepttime</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matches.each do |mat| %>
+      <tr>
+        <td><%= mat.journeyID_id %></td>
+        <td>
+          <!--to know the sender-->
+            <!--take package from match-->
+            <% thePackage =Package.find(mat.packageID_id)%>
+            <!--check the owner-->
+            <% sender = User.find(thePackage.user_id)%>
+            <!--display the sender-->
+            <%= sender.email %> <br/>
+            <%= sender.name%> <%= sender.surname %>
+        </td>
+        <td><%= mat.origin_id %></td>
+        <td><%= mat.destiny_id %></td>
+        <td><%= (mat.originTime).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= (mat.destinyTime).strftime("%m/%d/%Y %I:%M%p") %></td>
+        <td><%= mat.packageID_id %></td>
+        <td><%= mat.acceptTime %></td>
+        <td><%= mat.price %></td>
+        
+        <td><%= link_to 'Create Contract at Origin', new_contract_origin_path(:matchID_id => mat.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Match', new_match_path %>
