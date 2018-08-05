@@ -1,6 +1,6 @@
 class ContractOriginsController < ApplicationController
   before_action :set_contract_origin, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [ :index, :indexUser, :new, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
 
   # GET /contract_origins
   # GET /contract_origins.json

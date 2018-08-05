@@ -18,6 +18,7 @@
       <%= f.text_field :journeyID_id, value: @journey.id, :readonly => true %>
     </td>
     <td>
+      <% @packages = Package.where("user_id == ? and status == 'pending'", @journey.driverID_id) %>
       <% if @packages.empty? %>
         <%=link_to "create a package", new_package_path %>
       <%else%>
@@ -40,17 +41,17 @@
   <tr>
     <td>
       <%= f.label :originTime %><br>
-      <%= f.datetime_select :originTime, default: @journey.originTime, :readonly => true %>
+      <%= f.text_field :originTime, value: (@journey.originTime).strftime("%d/%m/%Y %I:%M%p"), :readonly => true %>
     </td>
     <td>
       <%= f.label :destinyTime %><br>
-      <%= f.datetime_select :destinyTime, default: @journey.destinyTime, :readonly => true %>
+      <%= f.text_field :destinyTime, value: (@journey.destinyTime).strftime("%d/%m/%Y %I:%M%p"), :readonly => true %>
     </td>
   </tr>
   <tr>
     <td>
       <%= f.label :acceptTime %><br>
-      <%= f.datetime_select :acceptTime, default: Date.today, :readonly => true %>
+      <%= f.text_field :acceptTime, value: (Date.today).strftime("%d/%m/%Y %I:%M%p"), :readonly => true %>
     </td>
     <td>
       <%= f.label :price %><br>

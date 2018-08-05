@@ -20,7 +20,7 @@
         <td><%= delivery_order.matchID_id %></td>
         <td><%= delivery_order.isSigned_Driver %></td>
         <td><%= delivery_order.isSigned_Receiver %></td>
-        <td><%= delivery_order.destiny_date %></td>
+        <td><%= (delivery_order.destiny_date).strftime("%d/%m/%Y %I:%M%p") %></td>
         <td><%= delivery_order.comment %></td>
         <td><%= link_to 'Show', delivery_order %></td>
         <td><%= link_to 'Edit', edit_delivery_order_path(delivery_order) %></td>

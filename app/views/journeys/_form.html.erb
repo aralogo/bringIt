@@ -136,7 +136,7 @@
         <% if current_user.isAdmin? %>
             <%= f.select :driverID_id, options_for_select(users.collect{|u| [u.name+ ' ' +u.surname, u.id] }, @journey.driverID_id) %>
         <% else %>
-             <%= f.text_field :driverID_id, :value => current_user.id, :disabled => true %>
+             <%= f.text_field :driverID_id, :value => current_user.id, :readonly => true %>
         <% end %>
       </td>
     </tr>

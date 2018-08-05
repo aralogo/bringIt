@@ -27,10 +27,8 @@ class MatchesController < ApplicationController
   end
   
   def newMatchfromJourney
+    @journey = Journey.find(params[:journey])
     @match = Match.new
-    
-    @journey = Journey.find(params[:id])
-    @packages = Package.where("user_id == ? and status == 'pending'", @journey.driverID_id)
   end
 
   # GET /matches/1/edit
@@ -38,19 +36,23 @@ class MatchesController < ApplicationController
   end
   
   def payMatch
-    update_attribute
+    @match = Match.find(params[:id])
   end
 
   # POST /matches
   # POST /matches.json
   def create
     @match = Match.new(match_params)
-    @package = Package.find (@match.packageID_id)
-   
+    @journey = Journey.find(@match.journeyID_id)
+    
+    @package = Package.find(@match.packageID_id)
+    
+  #  matched journeys car
+  #  max capacity/cat - count packages/cat  = space left if space left is 0 => update attribute vehicle.isFull
     
     respond_to do |format|
       if @match.save
-        format.html { redirect_to @match, notice: 'Match was successfully created.' }
+        format.html { redirect_to payMatch_path(@match.id), notice: 'Match was successfully created.' }
         format.json { render :payMatch, status: :created, location: @match }
         # to change the status of the package that already have a ride
         @package.update_attribute(:status, "matched")

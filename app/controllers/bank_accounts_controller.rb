@@ -1,6 +1,6 @@
 class BankAccountsController < ApplicationController
   before_action :set_bank_account, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :edit, :update, :destroy]
   
   # GET /bank_accounts
   # GET /bank_accounts.json

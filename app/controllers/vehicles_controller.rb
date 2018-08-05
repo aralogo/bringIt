@@ -1,6 +1,6 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy, :authenticate_admin!]
-  before_action :authenticate_admin!, only: [ :index, :edit, :new, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :edit, :update, :destroy]
   
   # GET /vehicles
   # GET /vehicles.json

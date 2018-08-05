@@ -1,15 +1,37 @@
 <div class="frontPage container">
+    <% if current_user %>
+        <% if current_user.isAdmin? %>
+            <div class="admin">
+                &nbsp;&nbsp;Admin: 
+                  <%= link_to 'Categories', categories_path, :method => :get, class: "btn btn-secondary" %> 
+                | <%= link_to 'Bank Accounts', bank_accounts_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Contracts at origin', contract_origins_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Contracts on delivery', delivery_orders_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Journeys', journeys_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Matches', matches_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Packages', packages_path, :method => :get, class: "btn btn-secondary" %>
+                | <%= link_to 'Vehicles', vehicles_path, :method => :get, class: "btn btn-secondary" %>
+                <!--only CRUD no operational to users-->
+                <!-- | < %= link_to 'Reviews', new_review_path, :method => :get, class: "btn btn-secondary" %>-->
+                <!-- | < %= link_to 'Locations Log', location_logs_path, :method => :get, class: "btn btn-secondary" %>-->
+                <!--no implemented yet-->
+                <!-- | < %= link_to 'Tracking packages', track_path, :method => :get, class: "btn btn-secondary" %>-->
+            </div>
+        <% end %>
+    <% end %>
     <br/><br/><br/><br/><br/>
     <div class="search">
         <%= render "journeys/search" %>
     </div>
-    <div class="search">
-        On the go: 
-        <%= link_to 'Picking a package', indexUserMatch_path, :method => :get, class: "btn btn-secondary" %> | 
-        <%= link_to 'Delivering a package', indexUserContract_path, :method => :get, class: "btn btn-secondary" %> |
-        <!--< %= link_to 'Review a journey', new_review_path, :method => :get, class: "btn btn-secondary" %> |-->
-        <!--< %= link_to 'Review a package', new_review_path, :method => :get, class: "btn btn-secondary" %>-->
-        <!--not implemented-->
-        <!--< %= link_to 'Track my package', track_path, :method => :get, class: "btn btn-secondary" %>-->
-    </div>
+    <% if current_user %>
+        <div class="search">
+            &nbsp;&nbsp;On the go: 
+            <%= link_to 'Picking a package', indexUserMatch_path, :method => :get, class: "btn btn-secondary" %> | 
+            <%= link_to 'Delivering a package', indexUserContract_path, :method => :get, class: "btn btn-secondary" %> |
+            <!--< %= link_to 'Review a journey', new_review_path, :method => :get, class: "btn btn-secondary" %> |-->
+            <!--< %= link_to 'Review a package', new_review_path, :method => :get, class: "btn btn-secondary" %>-->
+            <!--not implemented-->
+            <!--< %= link_to 'Track my package', track_path, :method => :get, class: "btn btn-secondary" %>-->
+        </div>
+    <% end %>
 </div>

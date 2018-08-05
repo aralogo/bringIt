@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   
   post 'search' => 'journeys#search'
   get 'journeydetails/:id' => 'journeys#showDetails' , :as => :journey_details
-  get 'newMatchfromJourney/:id' => 'matches#newMatchfromJourney', :as => :matchJourney
+  get 'newMatchfromJourney' => 'matches#newMatchfromJourney', :as => :matchJourney
+  get 'payMatch/:id' => 'matches#payMatch', :as => :payMatch
+  
   get 'indexUser' => 'matches#indexUser', :as => :indexUserMatch
   get 'indexUserOrigin' => 'contract_origins#indexUser', :as => :indexUserContract
   get 'indexUserDelivery' => 'delivery_orders#indexUser', :as => :indexUserDelivery
@@ -28,7 +30,7 @@ Rails.application.routes.draw do
   get '/about' => 'site#about'
   get '/contact' => 'site#contact'
   get '/home' => 'site#home'
-  get '/thanks' => 'site#thanks'
+  get '/thanks/:id' => 'site#thanks'
     
   root :to => "site#home"
   

@@ -5,6 +5,7 @@
 <table class="table">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Origin</th>
       <th>Origintime</th>
       <th>Intermediate1</th>
@@ -24,6 +25,7 @@
   <tbody>
     <% @journeys.each do |journey| %>
       <tr>
+        <td><%= journey.id %></td>
         <td><%= journey.origin.city %></td>
         <td><%= (journey.originTime).strftime("%d/%m/%Y %I:%M%p") %></td>
         <% if journey.intermediate1.city != "" %>

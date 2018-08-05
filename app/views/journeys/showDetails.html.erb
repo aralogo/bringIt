@@ -53,6 +53,8 @@
       <% if @vehicle.isFull? %>
         Vehicle is Full sorry!
       <% else %>
+      <!--add the empty spaces in the car-->
+      
       (max capacities)
         <% @categories.each do |cat| %>
           <div>Category <%= cat.id %>: <%= cat.max_length %>x<%= cat.max_width %>x<%= cat.max_height %>, <%= cat.max_height %> Kg</div>
@@ -68,8 +70,8 @@
 
 <div class="container" id="links" style="width:100%; float:left">
   <!--< %= link_to 'Edit', edit_journey_path(@journey) %> |-->
-<%= link_to 'Back', :back %> | 
-<%= link_to 'Select this journey', matchJourney_path(@journey.id) %>
+<%= link_to 'Back', "javascript:history.go(-1);" %> | 
+<%= link_to 'Select this journey', matchJourney_path(:journey => @journey.id) %>
 </div>
 
 

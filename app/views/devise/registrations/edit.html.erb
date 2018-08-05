@@ -98,13 +98,19 @@
 <!--if the user has a car registered show you the link to edit it, if not allows to create it-->
 <% @vehicle = Vehicle.where("driverID_id == ?", current_user.id) %>
 <% if @vehicle.empty? %>
-  <%= link_to 'New vehicle', vehicle %>
+  <%= link_to 'New vehicle', new_vehicle_path %>
 <% else %> 
   <%= link_to 'Edit Vehicle', edit_vehicle_path(@vehicle.ids[0]) %>
   <!--< %= link_to "Your vehicle", vehiclesUser_path %> -->
 <% end %>
 <!--set bank account-->
-<!--< %= link_to " Bank Details", bank_accounts_path %>-->
+<!--if the user has a car registered show you the link to edit it, if not allows to create it-->
+<% @bank = BankAccount.where("userID_id == ?", current_user.id) %>
+<% if @bank.empty? %>
+  <%= link_to 'New Bank Account', new_bank_account_path %>
+<% else %> 
+  <%= link_to 'Edit Bank Account', edit_bank_account_path(@bank.ids[0]) %>
+<% end %>
 
 
 
