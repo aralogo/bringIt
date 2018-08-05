@@ -14,108 +14,132 @@
   <table class="table">
     <tr>
       <td>
-        <!--Origin information-->
-        <%= f.fields_for :origin do |o| %>
-          <table >
-            <th colspan=2>Origin:</th>
-            <tr>
-              <td><%= o.label :Address1 %> <%= o.text_field :address1 %></td>
-              <td><%= o.label :Address2 %> <%= o.text_field :address2 %></td>
-            </tr>
-            <tr>
-              <td><%= o.label :city %> <%= o.text_field :city %></td>
-              <td><%= o.label :county %> <%= o.text_field :county %></td>
-            </tr>
-            <tr>
-              <td colspan=2><%= o.label :country %><%= o.text_field :country %></td>
-            </tr>
-          </table>
-        <% end %>
+      <!--Origin information-->
+      <%= f.fields_for :origin do |o| %>
+      <table>
+        <th colspan=2>Origin:</th>
+        <tr align="right">
+          <td><%= o.label :Address1 %> <%= o.text_field :address1 %></td>
+          <td><%= o.label :Address2 %> <%= o.text_field :address2 %></td>
+        </tr>
+        <tr align="right">
+          <td><%= o.label :city %> <%= o.text_field :city %></td>
+          <td><%= o.label :county %> <%= o.text_field :county %></td>
+        </tr>
+        <tr align="right">
+          <td colspan=2><%= o.label :country %><%= o.text_field :country %></td>
+        </tr>
+      </table>
+      <% end %>
       </td>
-      <td>
+      <td colspan="2" align="right">
         <%= f.label :price01 %><br><%= f.text_field :price01 %>
       </td>
     </tr>
     <tr>
-      <td>
-        <!--Intermediate point 1 information-->
-        <%= f.fields_for :intermediate1 do |i1| %>
-          <table >
-            <th colspan=2>Intermediate point1:</th>
+      <td colspan=2>
+        <%= image_tag "plus-button.png", :id =>"inter1", :width => 50, :height =>50 %> Add Intermediate point1
+        <div id="i1" class="startHidden">
+          <table class="table">
             <tr>
-              <td><%= i1.label :Address1 %> <%= i1.text_field :address1 %></td>
-              <td><%= i1.label :Address2 %> <%= i1.text_field :address2 %></td>
+              <td>
+                <!--Intermediate point 1 information-->
+                <%= f.fields_for :intermediate1 do |i1| %>
+                  <table>
+                    
+                    <tr align="right">
+                      <td><%= i1.label :Address1 %> <%= i1.text_field :address1 %></td>
+                      <td><%= i1.label :Address2 %> <%= i1.text_field :address2 %></td>
+                    </tr>
+                    <tr align="right">
+                      <td><%= i1.label :city %> <%= i1.text_field :city %></td>
+                      <td><%= i1.label :county %> <%= i1.text_field :county %></td>
+                    </tr>
+                    <tr align="right">
+                      <td colspan=2><%= i1.label :country %><%= i1.text_field :country %></td>
+                    </tr>
+                  </table>
+                <% end %>
+              </td>
+              <td colspan="2" align="right">
+                <%= f.label :price12 %><br><%= f.text_field :price12 %>
+              </td>
             </tr>
             <tr>
-              <td><%= i1.label :city %> <%= i1.text_field :city %></td>
-              <td><%= i1.label :county %> <%= i1.text_field :county %></td>
-            </tr>
-            <tr>
-              <td colspan=2><%= i1.label :country %><%= i1.text_field :country %></td>
+              <td colspan=2>
+                <%= image_tag "plus-button.png", :id =>"inter2", :width => 50, :height =>50 %> Add Intermediate point 2
+                <div id="i2" class="startHidden">
+                  <table class="table">
+                    <tr>
+                      <td>
+                        <!--Intermediate point 2 information-->
+                        <%= f.fields_for :intermediate2 do |i2| %>
+                          <table>
+                            <tr align="right">
+                              <td><%= i2.label :Address1 %> <%= i2.text_field :address1 %></td>
+                              <td><%= i2.label :Address2 %> <%= i2.text_field :address2 %></td>
+                            </tr>
+                            <tr align="right">
+                              <td><%= i2.label :city %> <%= i2.text_field :city %></td>
+                              <td><%= i2.label :county %> <%= i2.text_field :county %></td>
+                            </tr>
+                            <tr align="right">
+                              <td colspan=2><%= i2.label :country %><%= i2.text_field :country %></td>
+                            </tr>
+                          </table>
+                        <% end %>
+                      </td>
+                      <td colspan="2" align="right"> 
+                        <%= f.label :price23 %><br><%= f.text_field :price23 %>
+                      </td>
+                    </tr>
+                  
+                    <tr>
+                      <td colspan=2>
+                        <%= image_tag "plus-button.png", :id =>"inter3", :width => 50, :height =>50 %>Add Intermediate point 3 (last one)
+                        <div id="i3" class="startHidden">
+                          <!--Intermediate point 3 information-->
+                          <%= f.fields_for :intermediate3 do |i3| %>
+                            <table>
+                              <tr align="right">
+                                <td><%= i3.label :Address1 %> <%= i3.text_field :address1 %></td>
+                                <td><%= i3.label :Address2 %> <%= i3.text_field :address2 %></td>
+                              </tr>
+                              <tr align="right">
+                                <td><%= i3.label :city %> <%= i3.text_field :city %></td>
+                                <td><%= i3.label :county %> <%= i3.text_field :county %></td>
+                              </tr>
+                              <tr align="right">
+                                <td colspan=2><%= i3.label :country %><%= i3.text_field :country %></td>
+                              </tr>
+                            </table>
+                          <% end %>
+                        </div>  <!--inter3--> 
+                      </td>
+                    </tr>
+                  </table>        
+                </div>  <!--inter2-->
+              </td>
             </tr>
           </table>
-        <% end %>
-      </td>
-      <td><%= f.label :price12 %><br><%= f.text_field :price12 %></td>
-    </tr>
-    <tr>
-      <td>
-        <!--Intermediate point 2 information-->
-        <%= f.fields_for :intermediate2 do |i2| %>
-          <table >
-            <th colspan=2>Intermediate point 2:</th>
-            <tr>
-              <td><%= i2.label :Address1 %> <%= i2.text_field :address1 %></td>
-              <td><%= i2.label :Address2 %> <%= i2.text_field :address2 %></td>
-            </tr>
-            <tr>
-              <td><%= i2.label :city %> <%= i2.text_field :city %></td>
-              <td><%= i2.label :county %> <%= i2.text_field :county %></td>
-            </tr>
-            <tr>
-              <td colspan=2><%= i2.label :country %><%= i2.text_field :country %></td>
-            </tr>
-          </table>
-          <% end %>
-      </td>
-      <td><%= f.label :price23 %><br><%= f.text_field :price23 %></td>
-    </tr>
-    <tr>
-      <td>
-        <!--Intermediate point 3 information-->
-        <%= f.fields_for :intermediate3 do |i3| %>
-          <table >
-            <th colspan=2>Intermediate point 3:</th>
-            <tr>
-              <td><%= i3.label :Address1 %> <%= i3.text_field :address1 %></td>
-              <td><%= i3.label :Address2 %> <%= i3.text_field :address2 %></td>
-            </tr>
-            <tr>
-              <td><%= i3.label :city %> <%= i3.text_field :city %></td>
-              <td><%= i3.label :county %> <%= i3.text_field :county %></td>
-            </tr>
-            <tr>
-              <td colspan=2><%= i3.label :country %><%= i3.text_field :country %></td>
-            </tr>
-          </table>
-        <% end %>
+        </div><!--inter1-->
       </td>
     </tr>
     <tr>
       <td>
         <!--Destination information-->
         <%= f.fields_for :destiny do |d| %>
-          <table >
+          <table>
             <th colspan=2>Destination:</th>
-            <tr>
+            <tr align="right">
               <td><%= d.label :Address1 %> <%= d.text_field :address1 %></td>
               <td><%= d.label :Address2 %> <%= d.text_field :address2 %></td>
             </tr>
-            <tr>
+            <tr align="right">
               <td><%= d.label :city %> <%= d.text_field :city %></td>
               <td><%= d.label :county %> <%= d.text_field :county %></td>
             </tr>
-            <tr>
+            <tr align="right">
               <td colspan=2><%= d.label :country %><%= d.text_field :country %></td>
             </tr>
           </table>
@@ -130,7 +154,7 @@
       <td><%= f.label :destinyTime %><br> <%= f.datetime_select :destinyTime %></td>
     </tr>
     <tr>
-      <td>
+      <td colspan=2>
         <%= f.label :driverID_id %><br>
         <% users = User.all %>
         <% if current_user.isAdmin? %>
@@ -142,9 +166,9 @@
     </tr>
     
     <tr>
-      <td colspan=2 align="right">
-      <%= f.submit %>
-      </td>
+      <td colspan=2 align="right"><%= f.submit %></td>
     </tr>
   </table>
 <% end %>
+
+

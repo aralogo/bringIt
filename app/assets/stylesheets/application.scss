@@ -40,6 +40,18 @@ caption {
     top: 1px;
 }
 
+.startHidden{
+    display:none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+li{
+    display: inline;
+}
+
 .navbar-inverse {
     color: grey;
     background: lightgrey;

@@ -1,6 +1,6 @@
 class JourneysController < ApplicationController
   before_action :set_journey, only: [:show, :edit, :update, :destroy, :authenticate_admin!]
-  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :edit, :update, :destroy]
   
   # GET /journeys
   # GET /journeys.json
@@ -59,7 +59,8 @@ class JourneysController < ApplicationController
     @origin = "%#{params[:origin]}%"  
     @destiny = "%#{params[:destiny]}%"
     @date = "%#{params[:origin_date]}%"
-    
+   
+      puts "-------DATE------- #{@date}"
     
     
     if ((@origin != "%%") and (@destiny == "%%"))
@@ -67,23 +68,27 @@ class JourneysController < ApplicationController
       @journeys = Journey.where("origin_id IN (?) or intermediate1_id IN (?) or intermediate2_id IN (?) or intermediate3_id IN (?) ", @location_ids.ids, @location_ids.ids, @location_ids.ids, @location_ids.ids)
     elsif ((@origin == "%%") and (@destiny != "%%"))
       @location_ids = Location.where("city like ?", @destiny)
-      puts "-------------- #{@location_ids.ids} ---------------"
+      # puts "-------------- #{@location_ids.ids} ---------------"
       @journeys = Journey.where(" (intermediate1_id IN (?)) or (intermediate2_id IN (?)) or (intermediate3_id IN (?)) or (destiny_id IN (?)) ", @location_ids.ids, @location_ids.ids, @location_ids.ids, @location_ids.ids)
     elsif ((@origin != "%%") and (@destiny !=  "%%"))
       @O_ids = Location.where("city like ?", @origin)
       @D_ids = Location.where("city like ?", @destiny)
-      puts "-------O------- #{@O_ids}"
-      puts "-------D------- #{@D_ids}"
+      # puts "-------O------- #{@O_ids}"
+      # puts "-------D------- #{@D_ids}"
       @journeys = Journey.where( "origin_id IN (?) and destiny_id IN (?)" , @O_ids.ids, @D_ids.ids)
       
+      # to add all combinations with intermediate points to search possibilities, joining all of them
       # if O is ori then D can be i1,i2,i3 or des
       # if O is i1 then D can be i2,i3 or des
       # if O is i2 then D can be i3 or des
       # if O is i3 then D can be des
-      # visualise all the possibilities
-      
     else 
       @journeys = Journey.all
+    end
+    # add date to the search, which ever it was
+    if (@date != "%%")
+      @journeys = @journeys.where("originTime like ? ", @date)
+      
     end
   end
 
