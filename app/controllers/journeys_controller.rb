@@ -22,13 +22,19 @@ class JourneysController < ApplicationController
 
   # GET /journeys/new
   def new
-    @journey = Journey.new
-    @journey.origin = Location.new
-    @journey.build_intermediate1
-    @journey.build_intermediate2
-    @journey.build_intermediate3
-    @journey.destiny = Location.new
     
+    @vehicle =Vehicle.where("driverID_id== ?",current_user.id)
+    if (@vehicle)
+      @journey = Journey.new
+      @journey.origin = Location.new
+      @journey.build_intermediate1
+      @journey.build_intermediate2
+      @journey.build_intermediate3
+      @journey.destiny = Location.new
+    else
+      format.html { redirect_to @vehicle, notice: 'To create a journey you need a car.' }
+      format.json { render :new, location: @vehicle }
+    end
     
   end
 

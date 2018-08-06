@@ -1,6 +1,6 @@
 class ContractOriginsController < ApplicationController
   before_action :set_contract_origin, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :edit, :update, :destroy]
 
   # GET /contract_origins
   # GET /contract_origins.json
@@ -11,8 +11,9 @@ class ContractOriginsController < ApplicationController
   #to list the contracts on going to create a delivery
   def indexUser
     #to show a list of the matches for the user
+    @packages = Package.where("user_id == ?", current_user.id)
     @journeys = Journey.where("driverID_id == ?", current_user.id)
-    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+    @matches = Match.where("packageID_id IN (?) or journeyID_id IN (?)", @packages.ids, @journeys.ids)
     @contract_origins = ContractOrigin.where("matchID_id IN (?)", @matches.ids)
   end
 

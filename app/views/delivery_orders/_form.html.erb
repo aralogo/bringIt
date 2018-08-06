@@ -40,8 +40,10 @@
         <!--to know the sender-->
         <% thePackage =Package.find(@match.packageID_id)%>
         <% sender = User.find(thePackage.user_id)%>
+        <% theJourney =Journey.find(@match.journeyID_id)%>
+        <% driver = User.find(theJourney.driverID_id)%>
             
-        <%= f.label :isSigned_Driver, "Driver: #{current_user.name} #{current_user.surname}" %> 
+        <%= f.label :isSigned_Driver, "Driver: #{driver.name} #{driver.surname}" %> 
         <%= f.check_box :isSigned_Driver %></td>
       <td>
         <%= f.label :isSigned_Receiver, "Receiver:" %>

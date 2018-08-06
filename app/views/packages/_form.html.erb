@@ -20,7 +20,7 @@
         <% if @package.new_record? %>  <!--creating -->
            <%= f.select :category_id, options_for_select(categories.collect{|cat| [ 'Category ' +cat.id.to_s, cat.id] }) %>
         <% else %>    <!--editing --> 
-           <%= f.select :category_id, options_for_select(categories.collect{|cat| [ 'Category ' +cat.id.to_S, cat.id] }, @package.category_id) %>
+           <%= f.select :category_id, options_for_select(categories.collect{|cat| [ 'Category ' +cat.id.to_s, cat.id] }, @package.category_id) %>
         <% end %>
       </td>
     </tr>

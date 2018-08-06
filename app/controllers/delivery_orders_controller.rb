@@ -1,6 +1,6 @@
 class DeliveryOrdersController < ApplicationController
   before_action :set_delivery_order, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_admin!, only: [ :index, :new, :edit, :update, :destroy]
+  before_action :authenticate_admin!, only: [ :index, :edit, :update, :destroy]
   
   # GET /delivery_orders
   # GET /delivery_orders.json
@@ -10,9 +10,10 @@ class DeliveryOrdersController < ApplicationController
   
   #to list the deliveries for that user
   def indexUser
-    #to show a list of the matches for the user
+    #to show a list of the contract for the user
+    @packages = Package.where("user_id == ?", current_user.id)
     @journeys = Journey.where("driverID_id == ?", current_user.id)
-    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+    @matches = Match.where("packageID_id IN (?) or journeyID_id IN (?)", @packages.ids, @journeys.ids)
     @delivery_orders = DeliveryOrder.where("matchID_id IN (?)", @matches.ids)
   end
 
@@ -84,7 +85,7 @@ class DeliveryOrdersController < ApplicationController
       params.require(:delivery_order).permit(:matchID_id, :isSigned_Driver, :isSigned_Receiver, :destiny_date, :comment)
     end
     
-        def authenticate_admin!
+    def authenticate_admin!
       if current_user
         # the user is signed in
         if !current_user.isAdmin?

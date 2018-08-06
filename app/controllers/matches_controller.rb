@@ -10,9 +10,11 @@ class MatchesController < ApplicationController
   
   #to list the ones for the user to create a contract
   def indexUser
-    #to show a list of the matches for the user
+    #to show a list of the matches for the actual user as sender or driver
+    @packages = Package.where("user_id == ?", current_user.id)
     @journeys = Journey.where("driverID_id == ?", current_user.id)
-    @matches = Match.where("journeyID_id IN (?)", @journeys.ids)
+    @matches = Match.where("packageID_id IN (?) or journeyID_id IN (?)", @packages.ids, @journeys.ids)
+    
   end
 
   # GET /matches/1

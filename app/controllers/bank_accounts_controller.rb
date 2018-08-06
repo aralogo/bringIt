@@ -73,7 +73,7 @@ class BankAccountsController < ApplicationController
       params.require(:bank_account).permit(:ISBN, :accountHolder, :userID_id)
     end
     
-     def authenticate_admin!
+    def authenticate_admin!
       if current_user
         # the user is signed in
         if !current_user.isAdmin?
